@@ -1,0 +1,527 @@
+Date,Company/Brand,Stage,Amount($),Year,Founded,HeadQuarter,Sector
+2018-01-01,Vebbler,Seed,5800000.0,2018,2016,Bangalore,Media/Entertainment
+2018-01-01,StockEdge,Seed,1100000.0,2018,2016,Kolkata,Marketing
+2018-01-02,Max Healthcare,Corporate Round,5800000.0,2018,2016,Delhi,Automotive
+2018-01-03,Creator’s Gurukul,Angel,5800000.0,2018,2016,Gurugram,Other
+2018-01-03,Innov8 Coworking,Seed,4000000.0,2018,2016,Delhi,Real Estate
+2018-01-04,HousingMan.com,Seed,103000000.0,2018,2016,Bangalore,Real Estate
+2018-01-04,Food Memories,Seed,5800000.0,2018,2016,Ahmedabad,Consumables
+2018-01-05,1Crowd,Angel,3500000.0,2018,2016,Mumbai,Finance
+2018-01-05,Avenues Payments India Pvt. Ltd.,Corporate Round,1300000.0,2018,2016,Mumbai,Technology
+2018-01-06,Ontrack Technologies Pvt. Ltd,Seed,5800000.0,2018,2016,Bangalore,Consumer Services
+2018-01-07,Bombay Shaving Company,Series A,5800000.0,2018,2016,Delhi,Consumer Services
+2018-01-07,Lucideus,Venture - Series Unknown,5000000.0,2018,2016,Delhi,Consumer Services
+2018-01-08,Gegadyne Energy,Angel,5800000.0,2018,2016,Mumbai,Energy
+2018-01-09,BlueJack,Seed,64000000.0,2018,2016,Delhi,Automotive
+2018-01-10,Eunimart,Seed,5800000.0,2018,2016,Hyderabad,Consumer Services
+2018-01-10,HealthAssure,Seed,1000000.0,2018,2016,Mumbai,Automotive
+2018-01-10,Zomato,Seed,210000000.0,2018,2016,Gurugram,Consumables
+2018-01-11,Pooltoo,Seed,5800000.0,2018,2016,Delhi,Logistics
+2018-01-12,Aye Finance,Seed,72000000.0,2018,2016,Gurugram,Finance
+2018-01-13,Shop101,Series B,11000000.0,2018,2016,Mumbai,E-Commerce
+2018-01-14,Mobile Premier League (MPL),Series A,5000000.0,2018,2016,Bangalore,Gaming
+2018-01-14,Notesgen,Seed,12500000.0,2018,2016,Delhi,Education
+2018-01-15,Ambee,Angel,5800000.0,2018,2016,Bangalore,Automotive
+2018-01-16,Nivesh.com,Seed,30000000.0,2018,2016,Noida,Marketing
+2018-01-17,Taru Naturals,Seed,5800000.0,2018,2016,Mumbai,Agriculture
+2018-01-17,FeedMyPockets,Seed,44000000.0,2018,2016,Bangalore,Marketing
+2018-01-17,Poshmiles Online Solutions Private Limited,Seed,5800000.0,2018,2016,Bangalore,Logistics
+2018-01-19,Carcrew,Seed,2000000.0,2018,2016,Mumbai,Automotive
+2018-01-19,NicheAI,Angel,5800000.0,2018,2016,Hyderabad,Technology
+2018-01-19,dishq,Seed,400000.0,2018,2016,Bangalore,Technology
+2018-01-21,Wow Venue,Venture - Series Unknown,1500000.0,2018,2016,Mumbai,Other
+2018-01-21,MY CHIRAAG CAB,Seed,1000000.0,2018,2016,Jaipur,Logistics
+2018-01-22,Mamaearth,Series A,4000000.0,2018,2016,Gurugram,Consumer Services
+2018-01-23,Meesho,Series C,50000000.0,2018,2016,Bangalore,Media/Entertainment
+2018-01-24,Blackbuck,Series D,2029600000.0,2018,2016,Bangalore,Logistics
+2018-01-25,edureka!,Series A,2000000.0,2018,2016,Bangalore,Wellness/Beauty
+2018-01-25,FarmersFZ,Seed,5800000.0,2018,2016,Kochi,Agriculture
+2018-01-27,WheelsEMI,Series B,14000000.0,2018,2016,Pune,Automotive
+2018-01-27,Ummeed Housing Finance Private Limited,Series C,600000000.0,2018,2016,Haryana,Finance
+2018-01-28,CivilCops,Pre-Seed,100000.0,2018,2016,Gurugram,Technology
+2018-01-28,Traveo Soft Pvt. Ltd.,Seed,1200000.0,2018,2016,Bangalore,Logistics
+2018-01-30,Hospals,Seed,1500000.0,2018,2016,Delhi,Logistics
+2018-01-31,DataTrained,Seed,120000000.0,2018,2016,Bangalore,Education
+2018-01-31,TrustCheckr,Angel,100000.0,2018,2016,Bangalore,Technology
+2018-01-31,Design Cafe,Series B,2000000000.0,2018,2016,Bangalore,Real Estate
+2018-01-31,Scholify,Pre-Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-01-31,UpCyclersLab,Seed,5800000.0,2018,2016,Mumbai,Consumer Services
+2018-02-01,Shuttl,Seed,1000000.0,2018,2016,Gurugram,Logistics
+2018-02-02,Chrysalis (EZ Vidya),Seed,5800000.0,2018,2016,Chennai,Education
+2018-02-02,Snapmint,Seed,5800000.0,2018,2016,Mumbai,Consumer Services
+2018-02-02,Faclon Labs,Seed,5800000.0,2018,2016,Mumbai,Technology
+2018-02-02,Nutrisattva (Proliva),Angel,5800000.0,2018,2016,Anand,Consumables
+2018-02-03,Elemential,Seed,1000000.0,2018,2016,Mumbai,Technology
+2018-02-04,Urban Ladder,Seed,5600000.0,2018,2016,Bangalore,Real Estate
+2018-02-05,DailyNinja,Series A,5800000.0,2018,2016,Bangalore,Technology
+2018-02-05,Sequretek,Venture - Series Unknown,3700000.0,2018,2016,Mumbai,Technology
+2018-02-07,ZAMROO,Seed,5800000.0,2018,2016,India,E-Commerce
+2018-02-07,BYJU’S,Seed,540000000.0,2018,2016,Bangalore,Education
+2018-02-08,NiYO Solutions,Series A,13200000.0,2018,2016,Bangalore,FinTech
+2018-02-09,VTION,Seed,19200000.0,2018,2016,Gurugram,Media/Entertainment
+2018-02-10,Adiuvo Diagnostics,Seed,5800000.0,2018,2016,Chennai,Healthcare
+2018-02-11,Cube,Series A,140000000.0,2018,2016,Mumbai,FinTech
+2018-02-11,Generico,Series A,5800000.0,2018,2016,Mumbai,Automotive
+2018-02-12,Sleepy Owl Coffee,Seed,35000000.0,2018,2016,Delhi,Consumables
+2018-02-14,Fitternity,Seed,2000000.0,2018,2016,Mumbai,Automotive
+2018-02-14,The Social Hook,Seed,5800000.0,2018,2016,Bangalore,Marketing
+2018-02-14,Creditas Solutions,Seed,5800000.0,2018,2016,Gurugram,Finance
+2018-02-16,Vizzbee,Pre-Seed,20000.0,2018,2016,Bhopal,Consumer Services
+2018-02-16,Vivriti Capital,Venture - Series Unknown,28500000.0,2018,2016,Chennai,Finance
+2018-02-17,Cleardekho,Venture - Series Unknown,5800000.0,2018,2016,Ghaziabad,Lifestyle
+2018-02-17,Flickstree,Seed,5800000.0,2018,2016,Mumbai,Media/Entertainment
+2018-02-17,India Accelerator,Angel,5800000.0,2018,2016,Gurugram,Education
+2018-02-18,Dailyhunt,Series E,6000000.0,2018,2016,Bangalore,Media/Entertainment
+2018-02-20,UrbanClap,Series D,50000000.0,2018,2016,Delhi,Technology
+2018-02-20,Wealthtrust,Seed,500000.0,2018,2016,Mumbai,Finance
+2018-02-22,Hashtag Loyalty Private Limited,Seed,5800000.0,2018,2016,Mumbai,Consumer Services
+2018-02-23,Eduvanz,Angel,500000.0,2018,2016,Mumbai,Finance
+2018-02-26,TheCollegeFever,Seed,250000.0,2018,2016,Bangalore,Marketing
+2018-02-26,Hippo Video,Seed,5800000.0,2018,2016,Chennai,Media/Entertainment
+2018-02-27,Satvacart,Seed,5800000.0,2018,2016,Gurugram,Consumables
+2018-02-28,Asset Reconstruction Company (India) Ltd.,Seed,5800000.0,2018,2016,Mumbai,Finance
+2018-02-28,MobiKwik,Series E,240000000.0,2018,2016,Gurugram,FinTech
+2018-03-01,Loadshare,Series A,5000000.0,2018,2016,Bangalore,Automotive
+2018-03-02,Blueleaf Cyberspace Systems,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-03-02,Arogya MedTech,Seed,15000000.0,2018,2016,Kolkata,Automotive
+2018-03-02,DocPrime,Seed,50000000.0,2018,2016,Haryana,Automotive
+2018-03-02,Scapic,Seed,500000.0,2018,2016,Bangalore,Technology
+2018-03-04,AppWharf,Seed,5800000.0,2018,2016,Delhi,Technology
+2018-03-04,Wow Express,Series A,4500000.0,2018,2016,Mumbai,Technology
+2018-03-05,Shirsa Labs,Seed,500000.0,2018,2016,Mumbai,Gaming
+2018-03-05,Portea Medical,Seed,250000000.0,2018,2016,Bangalore,Automotive
+2018-03-07,Chezuba,Angel,1400000.0,2018,2016,Hyderabad,Technology
+2018-03-08,Chizel,Seed,5800000.0,2018,2016,Pune,Manufacture
+2018-03-09,APAC Financial Services,Seed,-2147483648.0,2018,2016,Mumbai,Finance
+2018-03-09,Leena AI,Seed,2000000.0,2018,2016,Gurugram,Technology
+2018-03-11,Mate Labs,Seed,550000.0,2018,2016,Bangalore,Technology
+2018-03-12,OYO,Series E,100000000.0,2018,2016,Gurugram,Hospitality
+2018-03-13,Strom Motors,Angel,5800000.0,2018,2016,Mumbai,Automotive
+2018-03-16,Buddy4Study.com,Series A,3000000.0,2018,2016,Noida,Automotive
+2018-03-17,Emojifi,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-03-17,Gramophone,Seed,1000000.0,2018,2016,Indore,Agriculture
+2018-03-18,AuthMetrik,Grant,10000.0,2018,2016,Gurugram,E-Commerce
+2018-03-19,Agricxlab Private Limited,Seed,500000.0,2018,2016,Thane,E-Commerce
+2018-03-19,Dream11,Series D,100000000.0,2018,2016,Mumbai,Gaming
+2018-03-19,Aviom India Housing Finance,Series A,150000000.0,2018,2016,Delhi,Finance
+2018-03-20,Wide Mobility Mechatronics,Seed,5800000.0,2018,2016,Bangalore,Automotive
+2018-03-21,Stelis Biopharma,Series B,100000000.0,2018,2016,Bangalore,Healthcare
+2018-03-21,Knocksense,Seed,5800000.0,2018,2016,Lucknow,Media/Entertainment
+2018-03-23,Stones2Milestones,Seed,5800000.0,2018,2016,Gurugram,Education
+2018-03-23,NIRA,Seed,1000000.0,2018,2016,Bangalore,FinTech
+2018-03-24,GoZefo,Venture - Series Unknown,210000000.0,2018,2016,Bangalore,Technology
+2018-03-24,FarmTaaza,Series A,5800000.0,2018,2016,Bangalore,Agriculture
+2018-03-24,Orbo.ai,Seed,5800000.0,2018,2016,Mumbai,Technology
+2018-03-25,SectorQube,Seed,5800000.0,2018,2016,Ernakulam,Consumer Services
+2018-03-25,Vokal,Series A,1500000.0,2018,2016,Bangalore,Technology
+2018-03-25,Licious,Series C,25000000.0,2018,2016,Bangalore,Consumables
+2018-03-26,Goals101,Seed,3500000.0,2018,2016,Delhi,Finance
+2018-03-26,RevFin,Seed,5800000.0,2018,2016,Delhi,Finance
+2018-03-26,FabAlley,Series B,600000000.0,2018,2016,Noida,Lifestyle
+2018-03-26,Roposo,Series C,10000000.0,2018,2016,Gurugram,Media/Entertainment
+2018-03-30,hoi foods,Seed,36000000.0,2018,2016,Gurugram,Consumables
+2018-03-31,HyperXchange,Series A,1000000.0,2018,2016,Pune,E-Commerce
+2018-04-02,Twenty Two Motors,Corporate Round,65000000.0,2018,2016,Haryana,Energy
+2018-04-02,GamingMonk,Series A,40000000.0,2018,2016,Delhi,Gaming
+2018-04-02,Trell,Seed,1250000.0,2018,2016,Bangalore,Technology
+2018-04-02,OTO Capital,Seed,50000000.0,2018,2016,Mumbai,Automotive
+2018-04-03,Wellthy Therapeutics Pvt Ltd,Seed,135000000.0,2018,2016,Mumbai,Automotive
+2018-04-03,HungerBox,Series A,4500000.0,2018,2016,Bangalore,Consumables
+2018-04-07,Zyla Health,Seed,5800000.0,2018,2016,Delhi,Hospitality
+2018-04-09,Wakefit,Venture - Series Unknown,650000000.0,2018,2016,Bangalore,Consumer Services
+2018-04-10,Wicked Ride Adventure Services Private Limited,Venture - Series Unknown,10000000.0,2018,2016,Bangalore,Automotive
+2018-04-12,Khabri,Seed,5800000.0,2018,2016,Haryana,Technology
+2018-04-13,Dee Dee Labs,Seed,5800000.0,2018,2016,Pune,Automotive
+2018-04-14,Career Anna,Seed,40000000.0,2018,2016,Bangalore,Education
+2018-04-14,Rays Power Infra,Venture - Series Unknown,2000000000.0,2018,2016,Jaipur,Energy
+2018-04-15,Rocketium,Seed,20000000.0,2018,2016,Bangalore,Media/Entertainment
+2018-04-16,Steradian Semiconductors,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-04-18,LetsTransport,Series B,1000000000.0,2018,2016,Bangalore,Logistics
+2018-04-18,Hansel.io,Series A,4000000.0,2018,2016,Bangalore,Technology
+2018-04-19,Connect India,Angel,5800000.0,2018,2016,Delhi,Logistics
+2018-04-21,Rubix108 Technologies,Seed,1000000.0,2018,2016,Pune,Technology
+2018-04-22,Mihuru,Seed,150000.0,2018,2016,Mumbai,Logistics
+2018-04-23,Biryani By Kilo,Seed,1000000.0,2018,2016,Noida,Consumables
+2018-04-26,RAHI Care,Venture - Series Unknown,5800000.0,2018,2016,Chandigarh,Automotive
+2018-04-26,Locus.sh,Series A,4000000.0,2018,2016,Bangalore,Logistics
+2018-04-27,DheeYantra Research Labs,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-04-28,Multibashi,Seed,10000000.0,2018,2016,Bangalore,Education
+2018-04-28,Silversparro Technologies Pvt. Ltd,Seed,300000.0,2018,2016,Gurugram,Technology
+2018-04-29,Moonshine Meadery,Seed,5800000.0,2018,2016,Pune,Consumables
+2018-04-29,Belstar Investment and Finance Private Limited,Venture - Series Unknown,28000000.0,2018,2016,Chennai,Finance
+2018-04-30,Predible Health,Seed,5800000.0,2018,2016,Bangalore,Healthcare
+2018-04-30,Rockmetric,Grant,5800000.0,2018,2016,Mumbai,Technology
+2018-05-01,Acko General Insurance,Series A,12000000.0,2018,2016,Mumbai,Media/Entertainment
+2018-05-01,ZestMoney,Series A,13400000.0,2018,2016,Bangalore,FinTech
+2018-05-01,MCaffeine,Seed,32000000.0,2018,2016,Mumbai,Consumer Services
+2018-05-02,Azure Power,Post-IPO Equity,185000000.0,2018,2016,Delhi,Energy
+2018-05-03,Wimoxez,Seed,20000.0,2018,2016,Hyderabad,Technology
+2018-05-04,IndigoLearn,Seed,150000.0,2018,2016,Hyderabad,Education
+2018-05-04,Streo,Seed,5800000.0,2018,2016,Gurugram,Media/Entertainment
+2018-05-05,9stacks,Series A,280000000.0,2018,2016,Delhi,Gaming
+2018-05-09,PregBuddy,Seed,5800000.0,2018,2016,Bangalore,Automotive
+2018-05-11,Flyrobe,Series B,264000000.0,2018,2016,Mumbai,Lifestyle
+2018-05-11,Vahdam Teas,Series B,2500000.0,2018,2016,Delhi,Consumables
+2018-05-11,FreightBazaar,Seed,5800000.0,2018,2016,Hyderabad,Logistics
+2018-05-11,Livehealth,Seed,1100000.0,2018,2016,Pune,Automotive
+2018-05-12,Hasura,Seed,1600000.0,2018,2016,Bangalore,Technology
+2018-05-13,Pratilipi,Series A,4300000.0,2018,2016,Bangalore,Media/Entertainment
+2018-05-13,Planet11 eCommerce Solutions India (Avenue11),Corporate Round,260000000.0,2018,2016,Bangalore,Technology
+2018-05-13,Cloudnine Hospitals,Seed,5800000.0,2018,2016,Bangalore,Automotive
+2018-05-14,Sportido,Seed,5800000.0,2018,2016,Noida,Gaming
+2018-05-15,Hyperdata.IO,Angel,50000000.0,2018,2016,Hyderabad,Marketing
+2018-05-15,Go Payments,Corporate Round,5800000.0,2018,2016,Mumbai,Technology
+2018-05-16,Carmel Organics,Series A,5800000.0,2018,2016,Indore,Manufacture
+2018-05-16,Stanza Living,Venture - Series Unknown,730000000.0,2018,2016,Delhi,Hospitality
+2018-05-16,HealWell24,Seed,200000.0,2018,2016,Mumbai,Automotive
+2018-05-17,SEDEMAC Mechatronics,Venture - Series Unknown,5800000.0,2018,2016,Mumbai,Energy
+2018-05-17,Vistara,Seed,-2147483648.0,2018,2016,Haryana,Technology
+2018-05-17,Cashkumar,Seed,50000000.0,2018,2016,Bangalore,FinTech
+2018-05-17,artbandhu,Pre-Seed,15000.0,2018,2016,Bangalore,Media/Entertainment
+2018-05-19,PayMe India,Angel,2000000.0,2018,2016,Noida,FinTech
+2018-05-20,Printline Media(ThePrint),Seed,34900000.0,2018,2016,Delhi,Media/Entertainment
+2018-05-22,FastFox,Series A,100000000.0,2018,2016,Gurugram,Logistics
+2018-05-25,Wishup,Seed,5800000.0,2018,2016,Azadpur,Consumer Services
+2018-05-27,Hubhopper,Series A,500000.0,2018,2016,Delhi,Gaming
+2018-05-28,myHQ,Series A,500000.0,2018,2016,Delhi,Education
+2018-05-28,Classworks India,Seed,100000.0,2018,2016,Chennai,Education
+2018-05-29,True Elements,Seed,50000000.0,2018,2016,Pune,Consumables
+2018-05-29,Med365 Healthcare,Seed,50000000.0,2018,2016,Jaipur,Healthcare
+2018-05-31,Fyle,Seed,1100000.0,2018,2016,Bangalore,Logistics
+2018-05-31,Jagaran Microfin,Seed,550000000.0,2018,2016,Kolkata,Finance
+2018-06-01,PerkFinance,Seed,900000.0,2018,2016,Bangalore,FinTech
+2018-06-01,Wedeterna,Angel,5800000.0,2018,2016,Bangalore,Other
+2018-06-02,Shape (School Health and Physical Education),Seed,200000.0,2018,2016,Pune,Education
+2018-06-03,McXtra,Seed,1300000.0,2018,2016,Andheri,Finance
+2018-06-03,EGK Foods,Seed,20000000.0,2018,2016,Mumbai,Consumables
+2018-06-04,AgNext Technologies,Series A,5800000.0,2018,2016,Mohali,Agriculture
+2018-06-05,Em Personal Care,Seed,5800000.0,2018,2016,Worli,Wellness/Beauty
+2018-06-06,Veritas Finance,Venture - Series Unknown,30000000.0,2018,2016,Guindy,Finance
+2018-06-06,ORO Wealth,Series A,1600000.0,2018,2016,Mumbai,Finance
+2018-06-07,Lavelle Networks,Venture - Series Unknown,20000000.0,2018,2016,Bangalore,Technology
+2018-06-07,SBI Life,Seed,742000000.0,2018,2016,Mumbai,Finance
+2018-06-08,Virtual MetalStreet(MetalStreet),Angel,700000.0,2018,2016,Bangalore,E-Commerce
+2018-06-09,Lendbox,Seed,60000000.0,2018,2016,Delhi,Finance
+2018-06-09,TECHBOOZE,Seed,100000.0,2018,2016,Delhi,Education
+2018-06-10,srJna,Seed,5800000.0,2018,2016,Jaipur,Education
+2018-06-10,Happyeasygo Group,Series A,5800000.0,2018,2016,Haryana,Logistics
+2018-06-10,ION Energy,Venture - Series Unknown,1041000.0,2018,2016,Mumbai,Energy
+2018-06-11,BhaskarGuru,Seed,1000000.0,2018,2016,Bhopal,Other
+2018-06-13,Fixpocket,Seed,250000.0,2018,2016,Ahmedabad,Media/Entertainment
+2018-06-14,HealthPlix,Series A,3000000.0,2018,2016,Bangalore,Automotive
+2018-06-14,Corefactors,Seed,5800000.0,2018,2016,Bangalore,Finance
+2018-06-15,alphaics Corporation,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-06-19,Clensta,Seed,5800000.0,2018,2016,Delhi,Automotive
+2018-06-19,NoPaperForms Solutions Pvt. Ltd.,Series B,3980000.0,2018,2016,Delhi,Education
+2018-06-19,DRIVEU,Venture - Series Unknown,70000000.0,2018,2016,Bangalore,Logistics
+2018-06-20,Upwards Fintech,Series A,5000000.0,2018,2016,Mumbai,Finance
+2018-06-21,Satya MicroCapital,Venture - Series Unknown,400000000.0,2018,2016,Delhi,Finance
+2018-06-22,Kobster,Seed,5800000.0,2018,2016,Chennai,E-Commerce
+2018-06-22,Inc42,Seed,5800000.0,2018,2016,Delhi,Media/Entertainment
+2018-06-22,iChamp,Seed,5000000.0,2018,2016,Gurugram,Education
+2018-06-25,Simulanis,Seed,500000.0,2018,2016,Delhi,Wellness/Beauty
+2018-06-26,Mech Mocha,Series B,3530000.0,2018,2016,Bangalore,Gaming
+2018-06-26,Pandorum Technologies,Series A,3600000.0,2018,2016,Bangalore,Healthcare
+2018-06-26,Log 9 Materials,Seed,30000000.0,2018,2016,Uttar Pradesh,Technology
+2018-06-26,Be U Salons,Seed,30000000.0,2018,2016,Delhi,Consumer Services
+2018-06-27,Workflexi,Seed,10000000.0,2018,2016,Bangalore,Other
+2018-06-27,Hero Electric,Venture - Series Unknown,1600000000.0,2018,2016,Delhi,Manufacture
+2018-06-27,BabyChakra,Series B,5800000.0,2018,2016,Mumbai,Automotive
+2018-06-27,SmartVizX,Seed,1450000.0,2018,2016,Noida,Technology
+2018-06-29,Sukkhi Jewellery,Venture - Series Unknown,510000000.0,2018,2016,Mumbai,Lifestyle
+2018-06-30,BetterPlace Safety Solutions Pvt. Ltd.,Series A,3000000.0,2018,2016,Bangalore,Wellness/Beauty
+2018-06-30,Worxogo,Series A,165000000.0,2018,2016,Bangalore,Technology
+2018-07-01,Vedantu,Series B,11000000.0,2018,2016,Bangalore,Education
+2018-07-02,PetSutra,Seed,9500000.0,2018,2016,Gurugram,Healthcare
+2018-07-02,Backpacker Panda Holidays Private Limited,Series A,1400000.0,2018,2016,Pune,Logistics
+2018-07-03,PivotRoots,Series A,5800000.0,2018,2016,Mumbai,Consumer Services
+2018-07-03,PlanetSpark,Seed,16000000.0,2018,2016,Gurugram,Education
+2018-07-04,LT Foods,Post-IPO Equity,1400000000.0,2018,2016,Delhi,Consumables
+2018-07-04,Myra,Venture - Series Unknown,8750000.0,2018,2016,Bangalore,Automotive
+2018-07-05,CoinGeto,Seed,120000000.0,2018,2016,Delhi,FinTech
+2018-07-05,Try & Buy,Seed,5800000.0,2018,2016,Delhi,Lifestyle
+2018-07-06,Inthree Access,Series A,4000000.0,2018,2016,Chennai,Consumer Services
+2018-07-07,Fric Bergen,Venture - Series Unknown,5800000.0,2018,2016,Alwar,Consumables
+2018-07-07,Scale Labs,Seed,1000000.0,2018,2016,Delhi,E-Commerce
+2018-07-08,Nykaa,Seed,1130000000.0,2018,2016,Mumbai,Lifestyle
+2018-07-09,MedCords,Seed,26400000.0,2018,2016,Pune,Wellness/Beauty
+2018-07-09,Mojro Technologies,Seed,650000.0,2018,2016,Bangalore,Logistics
+2018-07-11,Antariksh Waste Ventures Pvt ltd,Seed,500000.0,2018,2016,Chennai,Technology
+2018-07-12,DronaHQ,Angel,500000.0,2018,2016,Mumbai,Technology
+2018-07-12,Tolet for Students,Seed,5000000.0,2018,2016,Jodhpur,Hospitality
+2018-07-12,Olly Smart Credit Card,Seed,5800000.0,2018,2016,Delhi,Automotive
+2018-07-12,Mobycy,Angel,5800000.0,2018,2016,Gurugram,Logistics
+2018-07-13,CloudSek,Seed,140000000.0,2018,2016,Bangalore,Technology
+2018-07-13,Coutloot,Seed,1000000.0,2018,2016,Mumbai,Lifestyle
+2018-07-13,IndiQube,Series A,15000000.0,2018,2016,Bangalore,Real Estate
+2018-07-14,CashRich,Seed,1000000.0,2018,2016,Mumbai,FinTech
+2018-07-15,Verloop,Series A,3000000.0,2018,2016,Bangalore,Technology
+2018-07-15,Asteria Aerospace,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-07-18,Carmesi,Seed,34000000.0,2018,2016,Gurugram,Automotive
+2018-07-20,Paymatrix,Seed,100000.0,2018,2016,Hyderabad,Automotive
+2018-07-20,Playtoome,Seed,20000000.0,2018,2016,Bangalore,Media/Entertainment
+2018-07-23,Perpule,Series A,340000000.0,2018,2016,Bangalore,Consumer Services
+2018-07-23,HalaPlay Technologies,Series A,5000000.0,2018,2016,Bangalore,Gaming
+2018-07-25,arzooo.com,Seed,15000000.0,2018,2016,Bangalore,Consumer Services
+2018-07-26,Haazri,Seed,12500000.0,2018,2016,Mumbai,Consumables
+2018-07-27,Cyclops Medtech,Seed,1000000.0,2018,2016,Bangalore,Automotive
+2018-07-27,FoodBuddy,Seed,60000000.0,2018,2016,Belgaum,Consumables
+2018-07-27,mfine,Series A,4200000.0,2018,2016,Bangalore,Automotive
+2018-07-28,NirogStreet,Seed,300000.0,2018,2016,Gurugram,Automotive
+2018-07-28,MadGuy Labs,Venture - Series Unknown,150000.0,2018,2016,Hyderabad,Education
+2018-07-28,BUGWORKS Research India,Series A,9000000.0,2018,2016,Bangalore,Healthcare
+2018-07-29,Royal Sundaram General Insurance Co. Limited,Corporate Round,210000000.0,2018,2016,Kalpakkam,Healthcare
+2018-07-30,Freightwalla,Seed,5800000.0,2018,2016,Mumbai,Technology
+2018-07-31,Sensibull,Seed,25000000.0,2018,2016,Bangalore,E-Commerce
+2018-08-01,FLEECA,Seed,5800000.0,2018,2016,Jaipur,Automotive
+2018-08-02,LivQuik,Corporate Round,2700000.0,2018,2016,Mumbai,FinTech
+2018-08-03,INDwealth,Seed,-2147483648.0,2018,2016,Gurugram,Finance
+2018-08-06,Billdesk,Venture - Series Unknown,5800000.0,2018,2016,Ahmedabad,FinTech
+2018-08-06,CLP India Pvt. Ltd.,Seed,365000000.0,2018,2016,Mumbai,Energy
+2018-08-07,Awign Enterprises,Seed,50000000.0,2018,2016,Bangalore,Marketing
+2018-08-08,Huddle,Seed,300000.0,2018,2016,Haryana,Consumer Services
+2018-08-08,WOTU,Seed,5800000.0,2018,2016,Bangalore,Consumables
+2018-08-09,Avail Finance,Series A,17200000.0,2018,2016,Bangalore,FinTech
+2018-08-09,Plum Goodness,Series A,5800000.0,2018,2016,Thane,Automotive
+2018-08-10,Doxper,Seed,72000000.0,2018,2016,Mumbai,Automotive
+2018-08-11,Credy,Seed,1400000.0,2018,2016,Bangalore,FinTech
+2018-08-11,Enakshi,Seed,8000000.0,2018,2016,Ahmedabad,Lifestyle
+2018-08-11,ERUDITUS Executive Education,Series C,40000000.0,2018,2016,Mumbai,Education
+2018-08-11,Planys Technologies,Series A,140200000.0,2018,2016,Chennai,Energy
+2018-08-13,Flathalt,Angel,50000.0,2018,2016,Gurugram,Real Estate
+2018-08-13,Toffee,Seed,1500000.0,2018,2016,Gurugram,Technology
+2018-08-13,FreightBro,Seed,5800000.0,2018,2016,Mumbai,Logistics
+2018-08-13,Microchip Payments,Seed,5800000.0,2018,2016,Bangalore,Finance
+2018-08-14,Dunzo,Seed,70000000.0,2018,2016,Bangalore,Technology
+2018-08-14,Earth Food,Seed,64000000.0,2018,2016,Pune,Consumables
+2018-08-15,6Degree,Seed,400000.0,2018,2016,Mumbai,Consumer Services
+2018-08-15,Toppr,Series C,35000000.0,2018,2016,Mumbai,Education
+2018-08-15,Propelld,Seed,250000.0,2018,2016,Bangalore,FinTech
+2018-08-15,Healthkart,Venture - Series Unknown,10000000.0,2018,2016,Gurugram,Automotive
+2018-08-15,BuyForexOnline,Seed,2000000.0,2018,2016,Bangalore,Logistics
+2018-08-15,Disprz,Seed,400000.0,2018,2016,Chennai,Education
+2018-08-15,Colive.in,Seed,1800000.0,2018,2016,Bangalore,Consumer Services
+2018-08-16,Gugu,Seed,250000.0,2018,2016,Coimbatore,Energy
+2018-08-17,Chaayos,Series B,810000000.0,2018,2016,Delhi,Consumables
+2018-08-18,Impact Guru,Series A,2000000.0,2018,2016,Mumbai,Automotive
+2018-08-21,Deftouch,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-08-21,GalaxyCard,Seed,5800000.0,2018,2016,Noida,FinTech
+2018-08-22,InnerChef,Venture - Series Unknown,1760000.0,2018,2016,Gurugram,Consumables
+2018-08-22,PinkBlue,Seed,300000.0,2018,2016,Bangalore,Automotive
+2018-08-23,PharmEasy,Series C,80000000.0,2018,2016,Mumbai,Automotive
+2018-08-24,Fasal,Seed,120000.0,2018,2016,Bangalore,Agriculture
+2018-08-24,CollPoll,Seed,5800000.0,2018,2016,Bangalore,Education
+2018-08-25,Daaki,Angel,5800000.0,2018,2016,Bangalore,Automotive
+2018-08-25,PaisaDukan,Seed,650000.0,2018,2016,Mumbai,Finance
+2018-08-25,Survaider,Seed,500000.0,2018,2016,Bangalore,Marketing
+2018-08-25,OPEN,Seed,5800000.0,2018,2016,Bangalore,Finance
+2018-08-25,Flock,Seed,5800000.0,2018,2016,India,Media/Entertainment
+2018-08-26,Indiabulls Ventures,Post-IPO Equity,-2147483648.0,2018,2016,Mumbai,Finance
+2018-08-26,i2ifunding,Angel,50000000.0,2018,2016,Noida,Finance
+2018-08-26,Swiggy,Series H,1000000000.0,2018,2016,Bangalore,Consumables
+2018-08-26,Truebil,Series A,2000000.0,2018,2016,Mumbai,Automotive
+2018-08-27,Guardian.in,Seed,5800000.0,2018,2016,Mumbai,Automotive
+2018-08-28,Cred,Seed,5800000.0,2018,2016,Bangalore,Finance
+2018-08-28,ENLYFT DIGITAL SOLUTIONS PRIVATE LIMITED,Seed,200000.0,2018,2016,Pune,Marketing
+2018-08-28,PrestLoans,Seed,100000.0,2018,2016,Delhi,FinTech
+2018-08-29,GenRobotic,Seed,5800000.0,2018,2016,Trivandrum,Marketing
+2018-08-29,Groww,Seed,120000.0,2018,2016,Kormangala,Finance
+2018-08-29,University Living,Seed,5800000.0,2018,2016,Delhi,Education
+2018-08-29,Inntot Technologies,Seed,5800000.0,2018,2016,Kochi,Consumer Services
+2018-08-31,Cricnwin,Seed,5800000.0,2018,2016,Gurugram,Gaming
+2018-09-04,TheCollegeFever,Seed,250000.0,2018,2016,Bangalore,Marketing
+2018-09-04,Sports Flashes Pvt. Ltd,Seed,1000000.0,2018,2016,Delhi,Gaming
+2018-09-05,Pitstop,Seed,100000000.0,2018,2016,Bangalore,Automotive
+2018-09-05,BizCrum Infotech Pvt. Ltd.,Seed,5800000.0,2018,2016,Delhi,Consumer Services
+2018-09-05,Hush - Speak Up. Make Work Better,Seed,45000000.0,2018,2016,Bangalore,Hospitality
+2018-09-05,Zoctr Health,Seed,5800000.0,2018,2016,Powai,Automotive
+2018-09-06,Detect Technologies,Series A,3300000.0,2018,2016,Chennai,Energy
+2018-09-06,GuruQ,Seed,25000000.0,2018,2016,Delhi,Technology
+2018-09-08,Cardekho,Series C,75000000.0,2018,2016,Gurugram,Automotive
+2018-09-08,Doubtnut,Seed,35000000.0,2018,2016,Gurugram,Education
+2018-09-08,docturnal,Seed,5800000.0,2018,2016,Hyderabad,Automotive
+2018-09-11,LetsMD,Seed,1000000.0,2018,2016,Delhi,Automotive
+2018-09-13,Loanzen,Seed,5800000.0,2018,2016,Bangalore,Finance
+2018-09-13,Iba Halal Care,Series A,150000000.0,2018,2016,Ahmedabad,Wellness/Beauty
+2018-09-13,Shopkirana,Venture - Series Unknown,2000000.0,2018,2016,Indore,Consumer Services
+2018-09-16,Charcoal Eats,Seed,50000000.0,2018,2016,Mumbai,Consumables
+2018-09-16,Freshboxx,Seed,5800000.0,2018,2016,Hubli,Consumables
+2018-09-16,Syncremedies Healthcare Pvt Ltd,Seed,5800000.0,2018,2016,Bangalore,Automotive
+2018-09-17,Foyr,Series A,4200000.0,2018,2016,Pune,Real Estate
+2018-09-18,Sqrrl Fintech,Seed,1000000.0,2018,2016,Gurugram,FinTech
+2018-09-18,Kaleidofin,Seed,2800000.0,2018,2016,Chennai,Finance
+2018-09-19,Vivish Technologies (myGate),Series A,650000000.0,2018,2016,Bangalore,Technology
+2018-09-19,Awaaz De,Angel,5800000.0,2018,2016,Ahmedabad,Technology
+2018-09-20,Pixr8,Seed,50000.0,2018,2016,Ghaziabad,Media/Entertainment
+2018-09-21,Picture TIme,Seed,250000000.0,2018,2016,Delhi,Media/Entertainment
+2018-09-21,Mintifi,Seed,2000000.0,2018,2016,Mumbai,Finance
+2018-09-21,The Souled Store,Venture - Series Unknown,3000000.0,2018,2016,Mumbai,Lifestyle
+2018-09-21,ZiffyHomes,Seed,120000.0,2018,2016,Delhi,Logistics
+2018-09-22,Wishfie,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-09-22,Furlenco,Series C,5800000.0,2018,2016,Bangalore,Consumer Services
+2018-09-23,ElasticRun,Series B,600000000.0,2018,2016,Pune,Logistics
+2018-09-23,HappyEMI,Seed,1000000.0,2018,2016,Bangalore,FinTech
+2018-09-23,Cell Propulsion,Seed,7000000.0,2018,2016,Bangalore,Automotive
+2018-09-23,WHR,Seed,143145.0,2018,2016,Pune,Automotive
+2018-09-25,Manjushree Technopack,Seed,5800000.0,2018,2016,Bangalore,Consumer Services
+2018-09-26,Hey Deedee,Seed,33000000.0,2018,2016,Mumbai,Logistics
+2018-09-26,YourOwnROOM,Seed,750000.0,2018,2016,Bangalore,Logistics
+2018-09-26,InCred,Seed,41900000.0,2018,2016,Mumbai,Finance
+2018-09-27,Wishberry,Series A,100000000.0,2018,2016,Mumbai,Finance
+2018-09-27,BuildSupply,Series A,250000000.0,2018,2016,Gurugram,Real Estate
+2018-09-28,Spinny,Series A,11000000.0,2018,2016,Gurugram,Consumer Services
+2018-09-28,CleanseCar,Angel,35000000.0,2018,2016,Bangalore,Automotive
+2018-10-01,Wholesome Habits (EAT Anytime),Seed,500000.0,2018,2016,Mumbai,Consumables
+2018-10-01,ShakeDeal,Seed,5800000.0,2018,2016,Bangalore,E-Commerce
+2018-10-01,Ekincare,Series A,1500000.0,2018,2016,Hyderabad,Healthcare
+2018-10-01,&ME,Seed,5800000.0,2018,2016,Bangalore,Consumables
+2018-10-01,Square Off,Seed,1100000.0,2018,2016,Mumbai,Technology
+2018-10-02,Heelium,Seed,5800000.0,2018,2016,Pune,Gaming
+2018-10-02,Khidki,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-10-03,Drivezy,Seed,100000000.0,2018,2016,Bangalore,Automotive
+2018-10-03,Medikabazaar,Series A,5000000.0,2018,2016,Mumbai,E-Commerce
+2018-10-05,Racetrack,Seed,342000000.0,2018,2016,Bangalore,Media/Entertainment
+2018-10-05,ONGO Framework,Angel,1000000.0,2018,2016,Hyderabad,E-Commerce
+2018-10-05,Perspectico,Seed,5800000.0,2018,2016,Delhi,Automotive
+2018-10-07,Duroflex Pvt. Ltd.,Seed,22000000.0,2018,2016,Alleppey,Consumer Services
+2018-10-08,Gaia Smart Cities,Seed,5800000.0,2018,2016,Mumbai,Technology
+2018-10-08,Keito,Seed,5800000.0,2018,2016,Pune,Technology
+2018-10-08,Naaptol,Venture - Series Unknown,15000000.0,2018,2016,Mumbai,Consumer Services
+2018-10-09,Eupheus Learning,Seed,5800000.0,2018,2016,Delhi,Education
+2018-10-10,NewsBytes,Seed,1000000.0,2018,2016,Gurugram,Media/Entertainment
+2018-10-10,Droom Technology Private Limited,Series E,30000000.0,2018,2016,Gurugram,Automotive
+2018-10-11,Mombay,Seed,7500.0,2018,2016,Mumbai,Consumables
+2018-10-11,Eggoz,Angel,12000000.0,2018,2016,Indore,Consumables
+2018-10-11,Kriger Campus,Seed,30000000.0,2018,2016,Delhi,Education
+2018-10-12,Ideal Insurance Brokers/ 121Policy.com,Seed,1000000.0,2018,2016,Kolkata,Finance
+2018-10-12,Reculta,Seed,5800000.0,2018,2016,Noida,Education
+2018-10-12,Housejoy,Series B,3240000.0,2018,2016,Bangalore,Wellness/Beauty
+2018-10-14,MySEODoc,Seed,5800000.0,2018,2016,Delhi,Marketing
+2018-10-15,MissMalini Entertainment,Seed,104000000.0,2018,2016,Mumbai,Media/Entertainment
+2018-10-15,Rooter,Seed,45000000.0,2018,2016,India,Gaming
+2018-10-15,Propshop24,Seed,500000.0,2018,2016,Mumbai,E-Commerce
+2018-10-17,Magic Crate,Seed,5800000.0,2018,2016,Bangalore,Education
+2018-10-17,WalMart India,Venture - Series Unknown,37680000.0,2018,2016,Gurugram,Consumer Services
+2018-10-17,Tripeur,Seed,600000.0,2018,2016,Bangalore,Technology
+2018-10-17,Wooden Street,Series A,1000000.0,2018,2016,Jaipur,Real Estate
+2018-10-18,Fincash.com,Seed,150000.0,2018,2016,Mumbai,Other
+2018-10-19,Studds Accessories,Seed,1000000000.0,2018,2016,Faridabad,E-Commerce
+2018-10-20,Tabono,Seed,5800000.0,2018,2016,Gurugram,Gaming
+2018-10-20,Kogta Financial India Limited,Series B,1540000000.0,2018,2016,Jaipur,Finance
+2018-10-21,Kuants,Seed,5000000.0,2018,2016,Gurugram,Finance
+2018-10-22,Ultraviolette Automotive,Series A,60000.0,2018,2016,Bangalore,Energy
+2018-10-25,NIRAMAI Health Analytix,Seed,6000000.0,2018,2016,Bangalore,Automotive
+2018-10-26,MyDentistChoice,Seed,500000.0,2018,2016,Hyderabad,Automotive
+2018-10-27,Cellerite Systems,Seed,5800000.0,2018,2016,Hyderabad,Automotive
+2018-10-28,Xplorabox,Seed,5800000.0,2018,2016,Noida,Automotive
+2018-10-29,Streak,Seed,22500000.0,2018,2016,Bangalore,Finance
+2018-10-29,Singularity Dynamics,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-10-29,Verzeo,Series A,5000000.0,2018,2016,Bangalore,Education
+2018-10-30,Udaan,Series C,225000000.0,2018,2016,Bangalore,E-Commerce
+2018-10-30,SaffronStays,Seed,2000000.0,2018,2016,Mumbai,Technology
+2018-10-30,Trendlyne Technologies,Seed,200000.0,2018,2016,Bangalore,Finance
+2018-10-31,Avishkaar Box,Seed,50000000.0,2018,2016,Delhi,Education
+2018-10-31,Technology 9 Labs (T9L),Corporate Round,5800000.0,2018,2016,Delhi,Technology
+2018-10-31,Dainik Jagran,Seed,40000000.0,2018,2016,Kanpur,Media/Entertainment
+2018-11-01,Kissht,Series C,30000000.0,2018,2016,Mumbai,FinTech
+2018-11-02,MEngage,Seed,175000.0,2018,2016,Jaipur,Automotive
+2018-11-02,Happy Cow Dairy,Seed,40000000.0,2018,2016,Mumbai,Agriculture
+2018-11-03,Mynvax,Angel,5800000.0,2018,2016,Bangalore,Healthcare
+2018-11-03,Aavas Financiers,Seed,2000000000.0,2018,2016,Jaipur,Finance
+2018-11-03,ClearTax,Series B,-2147483648.0,2018,2016,Delhi,FinTech
+2018-11-03,Kuvera.in,Angel,250000.0,2018,2016,Bangalore,Finance
+2018-11-04,OckyPocky,Angel,5800000.0,2018,2016,Haryana,Gaming
+2018-11-05,Ola,Venture - Series Unknown,50000000.0,2018,2016,Kormangala,Logistics
+2018-11-06,Netmeds,Series C,35000000.0,2018,2016,Chennai,Automotive
+2018-11-06,Cogoport,Series A,6000000.0,2018,2016,Mumbai,Logistics
+2018-11-07,DigiConnectt Technologys,Seed,125000.0,2018,2016,Bangalore,Technology
+2018-11-07,Letstrack,Seed,1700000.0,2018,2016,Delhi,Technology
+2018-11-09,Togedr,Venture - Series Unknown,5800000.0,2018,2016,Gurugram,Hospitality
+2018-11-11,HealthifyMe,Series B,6000000.0,2018,2016,Bangalore,Automotive
+2018-11-11,Articbot,Grant,1200000.0,2018,2016,Kannur,Technology
+2018-11-13,Guiddoo World,Seed,800000.0,2018,2016,Mumbai,Logistics
+2018-11-13,Chtrbox,Angel,10000000.0,2018,2016,Mumbai,Marketing
+2018-11-14,GoBolt,Venture - Series Unknown,400000000.0,2018,2016,Delhi,Logistics
+2018-11-14,Aldopay,Seed,200000.0,2018,2016,Chennai,Finance
+2018-11-15,Spoofin,Venture - Series Unknown,5800000.0,2018,2016,Delhi,Media/Entertainment
+2018-11-15,Quikr,Seed,550000000.0,2018,2016,Bangalore,Logistics
+2018-11-15,Forum for Innovation Incubation Research and Entrepreneurship,Grant,102500000.0,2018,2016,Margão,Other
+2018-11-15,Loans4SME,Seed,5800000.0,2018,2016,Mumbai,Finance
+2018-11-15,Cash Suvidha,Seed,1000000.0,2018,2016,Delhi,Finance
+2018-11-16,Bonphul Air Products,Angel,20000000.0,2018,2016,Delhi,Technology
+2018-11-17,Qbera,Venture - Series Unknown,140000000.0,2018,2016,Bangalore,Finance
+2018-11-18,Chariot Tech,Seed,20000000.0,2018,2016,Delhi,Technology
+2018-11-19,UrbanPiper,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-11-19,HeyHolidays,Seed,1000000.0,2018,2016,Bangalore,Logistics
+2018-11-20,Chakr Innovation,Seed,5800000.0,2018,2016,Delhi,Energy
+2018-11-21,Tranzmeo,Pre-Seed,5800000.0,2018,2016,Cochin,Automotive
+2018-11-21,Kidovators (by GyanLab),Seed,180000.0,2018,2016,Bangalore,Education
+2018-11-21,Signzy,Series A,240000000.0,2018,2016,Bangalore,FinTech
+2018-11-22,Aarav Unmanned Systems,Seed,5800000.0,2018,2016,Bangalore,Technology
+2018-11-22,ShareChat,Series C,99230000.0,2018,2016,Bangalore,Media/Entertainment
+2018-11-23,BIGPHI TECHNOLOGIES PVT. LTD.,Angel,900000.0,2018,2016,Bangalore,Lifestyle
+2018-11-23,Jetbrain Robotics,Seed,70000.0,2018,2016,Gurugram,Automotive
+2018-11-23,Smartcoin,Seed,2000000.0,2018,2016,Bangalore,Finance
+2018-11-23,SlicePay,Series A,14900000.0,2018,2016,Bangalore,FinTech
+2018-11-24,Parkwheels,Seed,12000000.0,2018,2016,Haryana,Automotive
+2018-11-24,Entropik Technology,Seed,1100000.0,2018,2016,Bangalore,Technology
+2018-11-24,Tricog Health Services Pvt Ltd,Series A,4000000.0,2018,2016,Bangalore,Automotive
+2018-11-25,Idha Skin Clinic,Seed,5000000.0,2018,2016,Bangalore,Automotive
+2018-11-26,Pando,Seed,2000000.0,2018,2016,Chennai,Logistics
+2018-11-26,Finzy,Seed,1300000.0,2018,2016,Bangalore,Finance
+2018-11-26,Yumlane,Series A,4000000.0,2018,2016,Mumbai,Consumables
+2018-11-26,Magicpin,Series C,1410000000.0,2018,2016,Gurugram,Consumer Services
+2018-11-26,Finwego,Seed,5800000.0,2018,2016,Chennai,Finance
+2018-11-26,Satin Creditcare Network Limited (SCNL),Seed,30000000.0,2018,2016,Delhi,Finance
+2018-11-27,GoGaga,Seed,40000.0,2018,2016,Bangalore,Lifestyle
+2018-11-28,Placio,Seed,2000000.0,2018,2016,Noida,Hospitality
+2018-11-28,Doodhwala,Seed,2200000.0,2018,2016,Bangalore,Consumables
+2018-11-29,Chai Kings,Seed,20000000.0,2018,2016,Chennai,Consumables
+2018-11-29,MyNewCar.in,Venture - Series Unknown,1000000.0,2018,2016,Gurugram,Automotive
+2018-11-29,Rupeek,Series A,6830000.0,2018,2016,Bangalore,Finance
+2018-11-29,Freyr Energy,Series A,1500000.0,2018,2016,Hyderabad,Consumer Services
+2018-11-29,Any time Doctor,Angel,5800000.0,2018,2016,Chennai,Technology
+2018-11-30,Inner Being Wellness,Angel,35000000.0,2018,2016,Hyderabad,Wellness/Beauty
+2018-11-30,Benepik,Seed,5800000.0,2018,2016,Gurugram,Other
+2018-12-02,RupeeCircle,Seed,40000000.0,2018,2016,Mumbai,Finance
+2018-12-02,Zestl,Seed,5800000.0,2018,2016,Pune,Technology
+2018-12-02,Boodmo,Seed,70000000.0,2018,2016,Gurugram,Consumer Services
+2018-12-02,Picxy,Seed,130000.0,2018,2016,Guntur,Technology
+2018-12-03,OneAssist,Seed,2400000.0,2018,2016,Mumbai,Finance
+2018-12-03,Medimetry,Seed,5800000.0,2018,2016,Haryana,Automotive
+2018-12-04,Pentation Analytics,Seed,5800000.0,2018,2016,Mumbai,FinTech
+2018-12-04,Pipa+Bella,Series A,1000000.0,2018,2016,Mumbai,Consumer Services
+2018-12-04,Vogo Rentals,Seed,80000000.0,2018,2016,Kormangala,Logistics
+2018-12-05,Bon(Bonfleet Solutions),Seed,78000000.0,2018,2016,Pune,FinTech
+2018-12-06,Bounce (Metro Bikes),Seed,3000000.0,2018,2016,Bangalore,Automotive
+2018-12-07,MyLoanCare,Series A,65000000.0,2018,2016,Gurugram,Marketing
+2018-12-09,Droni Tech,Seed,35000000.0,2018,2016,Mumbai,Technology
+2018-12-10,Edyoo,Seed,1000000.0,2018,2016,Bangalore,Education
+2018-12-10,Ninjacart,Series B,-2147483648.0,2018,2016,Bangalore,E-Commerce
+2018-12-13,Stumagz,Seed,5800000.0,2018,2016,Hyderabad,Media/Entertainment
+2018-12-13,Ora,Seed,5800000.0,2018,2016,Kolkata,Hospitality
+2018-12-14,CropIn Technologies,Series B,580000000.0,2018,2016,Bangalore,Agriculture
+2018-12-14,The Ken,Series A,1500000.0,2018,2016,Bangalore,Media/Entertainment
+2018-12-16,HelloVerify,Seed,5800000.0,2018,2016,Noida,Technology
+2018-12-16,Yaantra,Seed,2000000.0,2018,2016,Delhi,Technology
+2018-12-18,Qandle,Seed,1200000.0,2018,2016,Gurugram,Technology
+2018-12-20,Roadcast,Angel,250000.0,2018,2016,Delhi,Logistics
+2018-12-21,Fusion Microfinance,Series E,-2147483648.0,2018,2016,Delhi,Finance
+2018-12-22,Emflux Motors,Seed,364846.0,2018,2016,Bangalore,Energy
+2018-12-22,GoBumpr,Seed,600000.0,2018,2016,Mylapore,Automotive
+2018-12-22,Tripshelf,Seed,16000000.0,2018,2016,Kalkaji,Hospitality
+2018-12-25,LearnApp,Seed,20000000.0,2018,2016,Noida,Education
+2018-12-26,Next Digital Solutions,Angel,100000.0,2018,2016,Kota,Marketing
+2018-12-26,UnoTag,Pre-Seed,100000.0,2018,2016,Bangalore,Technology
+2018-12-27,Moglix,Series C,23000000.0,2018,2016,Noida,E-Commerce
+2018-12-27,myUpchar,Series A,5000000.0,2018,2016,Delhi,Automotive
+2018-12-27,Aashiyaan Housing and Development Finance,Seed,135000000.0,2018,2016,Kolkata,Finance
+2018-12-28,UClean,Seed,40000000.0,2018,2016,India,Energy
+2018-12-29,Sattviko,Angel,5800000.0,2018,2016,Delhi,Consumables
+2018-12-30,Nua,Seed,5800000.0,2018,2016,Mumbai,Consumer Services
+2018-12-30,Livspace,Series C,70000000.0,2018,2016,Bangalore,E-Commerce
+2018-12-30,Theranosis Life Sciences,Seed,5800000.0,2018,2016,Hyderabad,Automotive
+2018-12-31,Drstore,Seed,5800000.0,2018,2016,Mumbai,Healthcare
+2018-12-31,ZunRoof,Angel,16600000.0,2018,2016,Gurugram,Consumer Services
+2018-12-31,Origo,Venture - Series Unknown,800000000.0,2018,2016,Gurugram,Agriculture
+2018-12-31,Milkbasket,Series A,7000000.0,2018,2016,Haryana,Consumables

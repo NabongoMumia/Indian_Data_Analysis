@@ -1,0 +1,90 @@
+Date,Company/Brand,Founded,HeadQuarter,Founders,Investor,Amount($),Stage,Year,Sector
+2019-01-04,Phable,2018,Bangalore,Sumit Sinha,"LetsVenture, 91 Springboard, IKP Knowledge, Angel investors, AbInbev-Serge DeVos, Wouter Peeters.",220000.0,Series A,2019,Healthcare
+2019-01-09,Credr,2014,Mumbai,Mittal,"Omidyar Network, Eight Roads Ventures, GrowthStory, AngelList",6000000.0,Series A,2019,Automotive
+2019-01-18,Oyo,2013,Gurugram,Ritesh Agarwal,"MyPreferred Transformation, Avendus Finance, SoftBank",693000000.0,Series A,2019,Hospitality
+2019-01-25,Rivigo,2014,Bangalore,"Deepak Garg, Gazal Kalra","SAIF Partners India VI Ltd, Spring Canter Investment Ltd",20000000.0,Series F,2019,Logistics
+2019-01-26,Freightwalla,2017,Mumbai,"Sanjay Bhatia, Bharat Tanvi, Punit Java","Amplo, FJ Labs, Rogue One Capital",4000000.0,Series A,2019,E-Commerce
+2019-02-02,Licious,2015,Bangalore,"Vivek Gupta, Abhay Hanjura",Vertex Ventures,25000000.0,Series D,2019,Consumables
+2019-02-03,Awign Enterprises,2016,Bangalore,"Annanya Sarthak, Gurpreet Singh, Praveen Sah","Work10M, Michael and Susan Dell Foundation, Eagle10, Unitus Ventures.",4000000.0,Series A,2019,Other
+2019-02-03,Quantiphi,2015,Bangalore,Renuka Ramnath,Multiples Alternate Asset Management,20000000.0,Series A,2019,Technology
+2019-02-08,KredX,2015,Bangalore,Manish Kumar,Tiger Global Management,26000000.0,Series B,2019,Technology
+2019-02-08,JobSquare,2019,Ahmedabad,Ishit Jethwa,Titan Capital,140500.0,Series A,2019,Technology
+2019-02-18,Fireflies .ai,2015,Bangalore,Sam Udotong,Canaan Partners,5000000.0,Series A,2019,Technology
+2019-02-27,Origo,2010,Gurugram,"Mayank Dhanuka, Sunoor Kaul","Oikocredit, Caspian SME Impact Fund IV,  Triodos Investment Management",6800000.0,Series A,2019,Technology
+2019-03-01,Zetwerk,2018,Bangalore,"Amit Acharya, Srinath Ramakkrushnan","Lightspeed and Greenoaks Capital, Sequoia India, Accel and Kae Capital",32000000.0,Series B,2019,Manufacture
+2019-03-01,MyGameMate,2015,Bangalore,Parshavv Jain& Raju Kushwaha,"Jindagi Live Angels,",100000.0,Series A,2019,Gaming
+2019-03-03,Moms Co,2015,Delhi,Malika Sadani,"Saama Capital, DSG Consumer Partners",5000000.0,Series B,2019,E-Commerce
+2019-03-07,Zest Money,2015,Bangalore,"Chapman, Priya Sharma, Ashish Anantharaman",Goldman Sachs.,15000000.0,Series B,2019,FinTech
+2019-03-18,Licious,2015,Bangalore,"Vivek Gupta, Abhay Hanjura",Vertex Growth Fund,30000000.0,Series E,2019,Consumables
+2019-03-23,Seekify,2019,Delhi,"Arihant Jain, Ajeet Kushwaha",Sequoia Capita,1500000.0,Seed funding,2019,Technology
+2019-03-23,Kratikal,2013,Noida,"Pavan Kushwaha, Paratosh Bansal, Dip Jung Thapa","Gilda VC, Art Venture, Rajeev Chitrabhanu.",1000000.0,Pre series A,2019,Technology
+2019-03-24,Slintel,2016,Bangalore,Deepak Anchala,Stellaris Ventures,1500000.0,Series A,2019,Technology
+2019-04-02,Appnomic,2015,Bangalore,D Padmanabhan,Avataar Ventures,22000000.0,Series A,2019,Technology
+2019-04-02,Medlife,2014,Bangalore,"Tushar Kumar, Prashant Singh",Wilson Global Opportunities Fund,15500000.0,Series A,2019,Healthcare
+2019-04-07,Open Secret,2015,Bangalore,"Ahana Gautam, Udit Kejriwal",Matrix Partners,6000000.0,Series A,2019,Consumables
+2019-04-09,Ola,2010,Bangalore,"Bhavish Aggarwal, Ankit Bhati","Kia Motors, Hyundai",311000000.0,Series A,2019,Logistics
+2019-04-24,GoMechanic,2016,Delhi,"Amit Bhasin, Kushal Karwa, Nitin Rana, Rishabh Karwa",Sequoia Capital,5000000.0,Series B,2019,Automotive
+2019-04-26,Box8,2011,Mumbai,"Amit Raj, Anshul Gupta",Trifecta Capital,120000000.0,Series A,2019,Consumables
+2019-04-27,m.Paani,2015,Mumbai,Akanksha Hazari,"AC Ventures, Henkel",5500000.0,Series A,2019,E-Commerce
+2019-04-27,HappyEasyGo,2017,Gurugram,"Vivek Prabhakar, Boris Zha","Korea Investment Partners (KIP), Samsung Venture Investment Corporation (SVIC), UOB Venture, 10 Fund, CVCapital, Zero2IPO Ventures, M&S Partners",49400000.0,Series B+,2019,Logistics
+2019-05-01,LivFin,2017,Delhi,Rakesh Malhotra,German development finance institution DEG,5000000.0,Series A,2019,FinTech
+2019-05-01,Lawyered,2015,Delhi,"Ashish Bhatia, Himanshu Gupta","Pramendra Tomar, Ratish Pandey, Munish Bhatia, Sumit Aggarwal",100000.0,Series A,2019,Technology
+2019-05-01,Finly,2015,Bangalore,"Vivek AG, Veekshith C Rai","Social Capital, AngelList India, Gemba Capital, Omphalos Ventures,  91springboard via Atal Innovation Mission, Niti Aayog.",6000000.0,Series A,2019,Technology
+2019-05-10,Azah Personal Care Pvt. Ltd.,2018,Gurugram,"Mohammed, Shashwat Diesh","Kunal Bahl, Rohit Bansal.",6000000.0,Pre series A,2019,Healthcare
+2019-05-11,Afinoz,2015,Noida,Rachna Suneja,Fintech innovation lab,6000000.0,Series A,2019,FinTech
+2019-05-11,FlytBase,2015,Pune,Nitin Gupta,Undisclosed,6000000.0,Series A,2019,Technology
+2019-05-12,Shadowfax,2015,Bangalore,"Abhishek Bansal, Vaibhav Khandelwal","Flipkart, Eight Roads Ventures, NGP Capital, Qualcomm Ventures, Mirae Asset Naver Fund, World Bank-backed IFC",60000000.0,Series D,2019,Logistics
+2019-05-23,Froogal,2015,Hyderabad,"Jeevan Chowdary M, Harshit Harchani",US-based angel investors,1000000.0,Pre series A,2019,Marketing
+2019-05-26,Zebu,2015,Bangalore,Team of Waterloo-based software developers,Undisclosed,4000000.0,Seed round,2019,Other
+2019-06-07,WishADish,2015,Delhi,"Sawan Kumar, Bhavya Bhambhani",Undisclosed,6000000.0,Series A,2019,Consumables
+2019-06-13,VMate,2015,Bangalore,"Vivek Gupta, Abhay Hanjura",Alibaba,100000000.0,Series A,2019,Media/Entertainment
+2019-06-21,Cub McPaws,2010,Mumbai,"Abhay Bhat, Kinnar Shah",Venture Catalysts,6000000.0,Series A,2019,E-Commerce
+2019-06-21,Lil’ Goodness and sCool meal,2015,Bangalore,"Vivek Gupta, Abhay Hanjura","Sajan Pillai, Muthu Krishnan,",400000.0,Series A,2019,Consumables
+2019-06-23,Cuemath,2013,Bangalore,Manan Khurma,"Manta Ray Ventures Limited, Google’s Capital G, Sequoia India.",5500000.0,Series A,2019,Education
+2019-06-24,Toffee Insurance,2017,Haryana,"Nishant Jain, Rohan Kumar",IVM Intersurer,5500000.0,Series A,2019,Finance
+2019-06-28,Kaleidofin,2018,Chennai,"Puneet Gupta, Sucharita Mukherjee",Oikocredit,5000000.0,Series A,2019,FinTech
+2019-07-10,HomeLane,2014,Chennai,"Srikanth Iyer, Rama Harinath","Evolvence India Fund (EIF), Pidilite Group, FJ Labs",30000000.0,Series D,2019,Real Estate
+2019-07-16,CarDekho,2008,Jaipur,Amit Jain,"Ping An Global Voyager Fund, Hillhouse Capital, Sequoia Capital",70000000.0,Series D,2019,Automotive
+2019-07-17,Sportido,2015,Noida,"Neeraj Aggarwala, Akhil Ramachandran","Inflection Point Ventures, SucSEED Venture Partners.",6000000.0,Series B,2019,Gaming
+2019-07-20,eJOHRI,2015,Mumbai,"Jignesh Mehta, Shailen Mehta",Rajesh Ranavat,1000000.0,Pre series A,2019,Other
+2019-08-04,DROR Labs Pvt. Ltd,2018,Delhi,"Dhiraj Naubhar, Dheeraj Bansal",Inflection Point Ventures,6000000.0,Series A,2019,Technology
+2019-08-08,Pristyn Care,2018,Bangalore,"Harsimarbir Singh, Dr Vaibhav Kapoor, Dr Garima Sawhney","Sequoia India, Hummingbird Ventures, Greenoaks Capital, AngelList.",12000000.0,Series B,2019,Automotive
+2019-08-10,SalaryFits,2015,Bangalore,Renato Araujo,Brazilian VC Fund Confrapar,5000000.0,Series A,2019,FinTech
+2019-08-19,HungerBox,2015,Bangalore,"Sandipan Mitra, Uttam Kumar","Paytm, Asian VC fund NPTK, Sabre Partners, Neoplux.",12000000.0,Series C,2019,Consumables
+2019-09-01,Bombay Shaving,2015,Bangalore,Shantanu Deshpande,Sixth Sense Ventures,6300000.0,Series A,2019,E-Commerce
+2019-09-03,Ruangguru,2014,Mumbai,"Adamas Belva Syah Devara, Iman Usman.",General Atlantic,150000000.0,Series C,2019,Education
+2019-09-12,TapChief,2016,Bangalore,"Shashank Murali, Binay Krishna, Arjun Krishna",Blume Ventures.,1500000.0,Pre series A,2019,Technology
+2019-09-12,Ecom Express,2012,Gurugram,"Krishnan, Manju Dhawan, K Satyanarayana, Sanjeev Saxena",CDC Group,36000000.0,Series A,2019,Logistics
+2019-09-12,Asteria Aerospace,2011,Bangalore,"Neel Mehta, Nihar Vartak",Reliance Industries,230000000.0,Series A,2019,Technology
+2019-09-14,Sarva,2015,Chennai,Sarvesh Shashi,"Venture fund, Fireside Ventures.",2800000.0,Series A,2019,Wellness/Beauty
+2019-09-14,Cubical Labs,2013,Bangalore,"Dhruv Ratra, Swati Vyas",Rockstud Capital,6000000.0,Series B,2019,Technology
+2019-09-25,Stanza Living,2017,Delhi,"Sandeep Dalmia, Anindya Dutta",Alteria Capital,5700000.0,Series A,2019,Real Estate
+2019-09-27,Observe.AI,2015,Bangalore,Swapnil,Scale Venture Partners,26000000.0,Series A,2019,Technology
+2019-10-04,Lenskart,2010,Delhi,"Peyush Bansal, Amit Chaudhary, Sumeet Kapahi",SoftBank,275000000.0,Series G,2019,E-Commerce
+2019-10-05,Byju's,2011,Bangalore,Byju Raveendran,"South Africa’s Naspers Ventures, the CPP Investment Board",540000000.0,Series A,2019,Education
+2019-10-05,Witblox,2014,Bangalore,Amit Modi,Mumbai Angels Network,182700.0,Series A,2019,Education
+2019-10-06,Ninjacart,2015,Bangalore,"Thirukumaran Nagarajanin, Vasudevan Chinnathambi","Walmart, Flipkart",6000000.0,Series A,2019,E-Commerce
+2019-10-07,Springboard,2013,Bangalore,"Gautam Tambay, Parul Gupta",Reach Capital,11000000.0,Post series A,2019,Education
+2019-10-13,Nivesh.com,2016,Noida,"Anurag Garg, Sridhar Srinivasan",Windrose Capital,600000.0,Series A,2019,Finance
+2019-10-17,Bijak,2019,Bangalore,"Nukul Upadhye, Mahesh Jakhotia, Jitender Bedwal, Daya Rai, Nikhil Tripathi","Omnivore and Omidyar Network India, Sequoia Capital",2500000.0,Seed fund,2019,Technology
+2019-10-17,Nu Genes,2004,Telangana,Narayana Reddy Punyala,Innovation in Food and Agriculture (IFA),6000000.0,Series A,2019,Technology
+2019-10-22,Purplle,2012,Mumbai,"Manish Taneja, Rahul Dash",Goldman Sachs,30000000.0,Series C,2019,Wellness/Beauty
+2019-10-23,Spinny,2015,Delhi,"Niraj Singh, Ramanshu Mahaur, Ganesh Pawar, Mohit Gupta","Norwest Venture Partners, General Catalyst, Fundamentum, Accel Partners",50000000.0,Series A,2019,Automotive
+2019-10-27,truMe,2015,Bangalore,"Babu Dayal, Pramod Uniyal, Lalit Mehta",Rajan Kaistha,140000.0,Series A,2019,Technology
+2019-11-01,Trell,2016,Bangalore,"Pulkit Agrawal, Prashant Sachan, Arun Lodhi, Bimal Kartheek Rebba","Ruizheng Investment, Tej Kapoor, Krinshavataram Venkata Vinjamuri, Harsh Shah",2000000.0,Pre series A,2019,Media/Entertainment
+2019-11-12,Bombay Shirt Company,2012,Mumbai,Akshay Narvekar,Lightbox Ventures,8000000.0,Series A,2019,E-Commerce
+2019-11-17,Pumpkart,2014,Chandigarh,KS Bhatia,Dinesh Dua,6000000.0,Series A,2019,E-Commerce
+2019-11-18,Ess Kay Fincorp,2015,Rajasthan,Rajendra Setia,"TPG, Norwest Venture Partners, Evolvence India",33000000.0,Series A,2019,Finance
+2019-12-02,Zolostays,2015,Bangalore,"Akhil Sikri, Nikhil Sikri, Sneha Choudhry",Trifecta Capital,7000000.0,Series A,2019,Real Estate
+2019-12-03,Kratikal,2015,Uttar pradesh,Pavan Kushwaha,"Gilda VC, Art Venture, Rajeev Chitrabhanu",1000000.0,Pre-series A,2019,Technology
+2019-12-07,Binca Games,2014,Mumbai,"Rubianca Wadhwa, Sahil Wadhwa",Sunil Gavaskar,6000000.0,Series A,2019,Gaming
+2019-12-10,Ecozen,2015,Pune,"Devendra Gupta, Prateek Singhal, Vivek Pandey",Innovation in Food & Agriculture Fund (IFA Fund),6000000.0,Series A,2019,Technology
+2019-12-12,Infra.Market,2015,Mumbai,"Aaditya Sharda, Souvik Sengupta","Tiger Global, Nexus Venture Partners, Accel Partners, Dhruv Agarwala",20000000.0,Series A,2019,Technology
+2019-12-13,Rein Games,2015,Noida,"Vaibhav Gupta, Himanshu Devra, Pranav Chaudhary, Nishtha Gupta","Manipal Education and Medical Group (MEMG) family office, Titan Capital",50000000.0,Pre series A,2019,Technology
+2019-12-14,Zoomcar,2013,Bangalore,"Greg Moran, David Back",Zoomcar Inc,4800000.0,Series A,2019,Logistics
+2019-12-22,PiBeam,2015,Chennai,Visakh Sasikumar,GAIL (India) Ltd,50000000.0,Series A,2019,Automotive
+2019-12-23,Smart Institute,2015,Surat,"Vivek Gupta, Abhay Hanjura",HNI investors,1500000.0,Series A,2019,Education
+2019-12-27,Freshokartz,2016,Jaipur,Rajendra Lora,ThinkLab,150000.0,Pre series A,2019,E-Commerce
+2019-12-27,Euler Motors,2015,Delhi,Saurav Kumar,"Blume Ventures, Emergent Ventures",2000000.0,Series A,2019,Automotive
+2019-12-31,IndyFint,2019,Bangalore,Paddy Padmanabhan,Saravanan Adiseshan,2100000.0,Series A,2019,FinTech
+2019-12-31,Eduisfun,2015,Mumbai,Jatin Solanki,"Deepak Parekh, Amitabh Bachchan, Piyush Pandey",28000000.0,Fresh funding,2019,Education

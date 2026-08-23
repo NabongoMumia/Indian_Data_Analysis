@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Student Database System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+        <span class="navbar-brand">Sky Schools Portal | Welcome, {{ username }}</span>
+        <a href="/logout" class="btn btn-outline-light btn-sm">Log Out</a>
+    </div>
+</nav>
+
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} p-2">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <!-- Retrieve Student -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">🔍 Find Existing Student</h5>
+            <div class="input-group">
+                <input type="text" id="search_adm" class="form-control" placeholder="Enter Admission No...">
+                <button class="btn btn-secondary" onclick="fetchStudent()">Retrieve Data</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Details Form -->
+    <form action="/save_student" method="POST" class="card shadow-sm p-4 mb-4">
+        <h4 class="mb-3">Academic Data Entry</h4>
+        
+        <div class="row g-3 mb-3">
+            <div class="col-md-3">
+                <label class="form-label">Admission No</label>
+                <input type="text" name="adm_no" id="adm_no" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Student Name</label>
+                <input type="text" name="student_name" id="student_name" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Class / Grade</label>
+                <input type="text" name="class_name" id="class_name" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Assessment Term</label>
+                <select name="assessment_term" id="assessment_term" class="form-select">
+                    <option>End-Term Exam</option>
+                    <option>Mid-Term Exam – Mid-term</option>
+                    <option>Baseline Assessment – Term 1</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-3">
+            <div class="col-md-3">
+                <label class="form-label">Opening Date</label>
+                <input type="text" name="opening_date" id="opening_date" value="01/09/2026" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Closing Date</label>
+                <input type="text" name="closing_date" id="closing_date" value="15/12/2026" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Class Teacher Name</label>
+                <input type="text" name="class_teacher" id="class_teacher" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Principal Name</label>
+                <input type="text" name="principal_name" id="principal_name" class="form-control">
+            </div>
+        </div>
+
+        <h5 class="mt-4 mb-3">Subject Scores & Teachers</h5>
+        <div class="row">
+            {% for sub in subjects %}
+            <div class="col-md-4 mb-3">
+                <div class="border p-2 rounded bg-white">
+                    <strong>{{ sub }}</strong>
+                    <input type="number" step="0.1" name="score_{{ sub }}" id="score_{{ sub }}" class="form-control my-1" placeholder="Score (0-100)" min="0" max="100" required>
+                    <input type="text" name="teacher_{{ sub }}" id="teacher_{{ sub }}" class="form-control" placeholder="Teacher Name">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="d-grid gap-2 mt-3">
+            <button type="submit" class="btn btn-success btn-lg">💾 Save Student Record</button>
+            <button type="button" class="btn btn-outline-primary btn-lg" onclick="printPDF()">🖨️ Print Single Student PDF</button>
+        </div>
+    </form>
+
+    <!-- Class Reports & Export Options -->
+    <div class="row mb-4">
+        <!-- Whole Class PDF Compilation Form -->
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm p-4 h-100">
+                <h5>🖨️ Compile Class Reports (Single PDF)</h5>
+                <p class="text-muted small">Select a class to generate a single combined PDF containing all student report cards.</p>
+                <form action="/download_class_pdf" method="POST" class="row g-2 mt-auto">
+                    <div class="col-8">
+                        <select name="class_name" class="form-select" required>
+                            <option value="" disabled selected>Select Class...</option>
+                            {% for c in classes %}
+                                <option value="{{ c }}">{{ c }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary w-100">Download PDF</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Excel Export Form -->
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm p-4 h-100">
+                <h5>📊 Export Class Marklist to Excel</h5>
+                <p class="text-muted small">Export student marks and rankings into a spreadsheet file.</p>
+                <form action="/export_excel" method="POST" class="row g-2 mt-auto">
+                    <div class="col-8">
+                        <select name="class_name" class="form-select" required>
+                            <option value="" disabled selected>Select Class...</option>
+                            {% for c in classes %}
+                                <option value="{{ c }}">{{ c }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-warning w-100">Export (.xlsx)</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function fetchStudent() {
+    let adm = document.getElementById('search_adm').value.trim();
+    if (!adm) return alert("Enter Admission No.");
+    
+    fetch('/api/student/' + adm)
+        .then(res => res.json())
+        .then(data => {
+            if (!data.found) return alert("Student record not found.");
+            document.getElementById('adm_no').value = data.adm_no;
+            document.getElementById('student_name').value = data.student_name;
+            document.getElementById('class_name').value = data.class_name;
+            document.getElementById('assessment_term').value = data.assessment_term;
+            document.getElementById('opening_date').value = data.opening_date;
+            document.getElementById('closing_date').value = data.closing_date;
+            document.getElementById('class_teacher').value = data.class_teacher || '';
+            document.getElementById('principal_name').value = data.principal_name || '';
+
+            ['english', 'maths', 'chemistry', 'biology', 'ict', 'physics', 'business', 'geography', 'islamiyat'].forEach(sub => {
+                let formatted = sub.charAt(0).toUpperCase() + sub.slice(1);
+                document.getElementById('score_' + formatted).value = data[sub] || 0;
+                document.getElementById('teacher_' + formatted).value = (data.teachers && data.teachers[formatted]) ? data.teachers[formatted] : '';
+            });
+        });
+}
+
+function printPDF() {
+    let adm = document.getElementById('adm_no').value.trim();
+    if (!adm) return alert("Please save or retrieve a student record first.");
+    window.location.href = '/generate_pdf/' + adm;
+}
+</script>
+</body>
+</html>

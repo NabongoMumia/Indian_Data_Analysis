@@ -1,0 +1,2 @@
+DOS-    cd /d D:\school_report_web python app.py
+DOS     lt --port 5000

@@ -101,7 +101,7 @@ def login():
         return redirect(url_for("index"))
 
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
 
     if action == "register":
         cur.execute("SELECT id FROM users WHERE username = %s;", (username,))
@@ -120,14 +120,18 @@ def login():
     elif action == "login":
         cur.execute("SELECT * FROM users WHERE username = %s;", (username,))
         user = cur.fetchone()
-        if user and check_password_hash(user["password"], password):
-            session["username"] = username
-            flash("Logged in successfully!", "success")
-            cur.close()
-            conn.close()
-            return redirect(url_for("dashboard"))
-        else:
-            flash("Invalid credentials.", "danger")
+        if user:
+            user_password_hash = user["password"] if isinstance(user, dict) else user[2]
+            if check_password_hash(user_password_hash,password):
+                session["username"] = username
+                flash("Logged in successfully!", "success")
+                cur.close()
+                conn.close()
+                return redirect(url_for("dashboard"))
+            else:
+                flash("Invalid credentials.", "danger")
+         else:
+            flash("Invalid credentials.","danger")
 
     cur.close()
     conn.close()

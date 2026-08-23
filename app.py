@@ -7,7 +7,6 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
 
-# PDF & Excel Libraries
 import openpyxl
 from pypdf import PdfWriter
 from reportlab.lib.pagesizes import letter
@@ -15,7 +14,6 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib import colors
 
-# Load environment variables from .env file
 load_dotenv()
 
 app = Flask(__name__)
@@ -27,9 +25,8 @@ SUBJECTS = ['English', 'Maths', 'Chemistry', 'Biology', 'ICT', 'Physics', 'Busin
 def get_db_connection():
     db_url = os.getenv("DATABASE_URL")
     if not db_url:
-        raise RuntimeError("DATABASE_URL environment variable is missing. Please set it in your host environment settings.")
+        raise RuntimeError("DATABASE_URL environment variable is missing.")
     
-    # Render fix: Convert legacy 'postgres://' URI to 'postgresql://'
     if db_url.startswith("postgres://"):
         db_url = db_url.replace("postgres://", "postgresql://", 1)
         
@@ -39,7 +36,7 @@ def get_db_connection():
 def init_db():
     try:
         conn = get_db_connection()
-        cur = conn.cursor()
+        cur = conn.cursor(cursor_factory=RealDictCursor)
         
         cur.execute('''
             CREATE TABLE IF NOT EXISTS users (
@@ -78,7 +75,6 @@ def init_db():
         print(f"Database initialization error: {e}")
 
 
-# Initialize database safely within request context if tables don't exist
 with app.app_context():
     init_db()
 
@@ -120,9 +116,10 @@ def login():
     elif action == "login":
         cur.execute("SELECT * FROM users WHERE username = %s;", (username,))
         user = cur.fetchone()
+        
         if user:
-            user_password_hash = user["password"] if isinstance(user, dict) else user[2]
-            if check_password_hash(user_password_hash,password):
+            user_pw = user["password"] if isinstance(user, dict) else user[2]
+            if check_password_hash(user_pw, password):
                 session["username"] = username
                 flash("Logged in successfully!", "success")
                 cur.close()
@@ -130,8 +127,8 @@ def login():
                 return redirect(url_for("dashboard"))
             else:
                 flash("Invalid credentials.", "danger")
-         else:
-            flash("Invalid credentials.","danger")
+        else:
+            flash("Invalid credentials.", "danger")
 
     cur.close()
     conn.close()
@@ -151,7 +148,7 @@ def dashboard():
         return redirect(url_for("index"))
 
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
     cur.execute("SELECT DISTINCT class_name FROM students WHERE class_name IS NOT NULL AND class_name != '';")
     classes = [row["class_name"] for row in cur.fetchall()]
     cur.close()
@@ -166,7 +163,7 @@ def get_student(adm_no):
         return jsonify({"found": False, "error": "Unauthorized"}), 401
 
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
     cur.execute("SELECT * FROM students WHERE adm_no = %s;", (adm_no,))
     student = cur.fetchone()
     cur.close()
@@ -204,7 +201,7 @@ def save_student():
         teachers[sub] = request.form.get(f"teacher_{sub}", "")
 
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
 
     cur.execute("""
         INSERT INTO students (
@@ -309,7 +306,7 @@ def generate_pdf(adm_no):
         return redirect(url_for("index"))
 
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
     cur.execute("SELECT * FROM students WHERE adm_no = %s;", (adm_no,))
     student = cur.fetchone()
     cur.close()
@@ -330,7 +327,7 @@ def download_class_pdf():
 
     class_name = request.form.get("class_name")
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
     cur.execute("SELECT * FROM students WHERE class_name = %s ORDER BY student_name ASC;", (class_name,))
     students = cur.fetchall()
     cur.close()
@@ -360,7 +357,7 @@ def export_excel():
 
     class_name = request.form.get("class_name")
     conn = get_db_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
     cur.execute("SELECT * FROM students WHERE class_name = %s ORDER BY student_name ASC;", (class_name,))
     students = cur.fetchall()
     cur.close()

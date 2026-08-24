@@ -10,10 +10,10 @@ from dotenv import load_dotenv
 import openpyxl
 from pypdf import PdfWriter
 from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
-from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib import colors
-from reportlab.graphics.shapes import Drawing, String, Line
+from reportlab.graphics.shapes import Drawing, String, PolyLine
 from reportlab.graphics.charts.barcharts import VerticalBarChart
 
 load_dotenv()
@@ -106,21 +106,91 @@ def create_student_pdf_buffer(student):
         pagesize=letter,
         leftMargin=36,
         rightMargin=36,
-        topMargin=25,
-        bottomMargin=25
+        topMargin=20,
+        bottomMargin=20
     )
     styles = getSampleStyleSheet()
+    
+    NAVY = colors.HexColor('#0A2540')
+    HEADER_BLUE = colors.HexColor('#1E3A8A')
+    LIGHT_BG = colors.HexColor('#F8FAFC')
+    LINE_ORANGE = colors.HexColor('#D97706')
+
+    title_style = ParagraphStyle(
+        'HeaderTitle',
+        parent=styles['Title'],
+        fontName='Helvetica-Bold',
+        fontSize=18,
+        leading=22,
+        textColor=NAVY,
+        alignment=0  # Left-aligned inside header cell
+    )
+    
+    sub_title_style = ParagraphStyle(
+        'HeaderSub',
+        parent=styles['Normal'],
+        fontName='Helvetica',
+        fontSize=8.5,
+        leading=11,
+        textColor=colors.HexColor('#475569'),
+        alignment=0
+    )
+    
+    motto_style = ParagraphStyle(
+        'HeaderMotto',
+        parent=styles['Normal'],
+        fontName='Helvetica-Oblique',
+        fontSize=8.5,
+        leading=11,
+        textColor=colors.HexColor('#1E40AF'),
+        alignment=0
+    )
+    
+    section_heading = ParagraphStyle(
+        'SecHeading',
+        parent=styles['Heading2'],
+        fontName='Helvetica-Bold',
+        fontSize=12,
+        leading=14,
+        textColor=NAVY,
+        alignment=1
+    )
+
     elements = []
 
-    # 1. School Header & Title Banner
-    elements.append(Paragraph("<font size=16 color='#003366'><b>SKY INTERNATIONAL SCHOOLS</b></font>", styles['Title']))
-    elements.append(Paragraph("<font size=9>Email: info@skyschools.net | Hargeisa, Somaliland</font>", styles['Normal']))
-    elements.append(Paragraph("<font size=9><i>'No Substitute For Self Discipline'</i></font>", styles['Normal']))
-    elements.append(Spacer(1, 8))
-    elements.append(Paragraph("<b>PROGRESS & ACHIEVEMENT REPORT</b>", styles['Heading2']))
-    elements.append(Spacer(1, 10))
+    # 1. Top Header with Logo inserted on Left
+    logo_path = os.path.join(app.root_path, 'image1.png')
+    if not os.path.exists(logo_path):
+        logo_path = os.path.join(app.root_path, 'static', 'image1.png')
 
-    # 2. Student Metadata Table
+    header_text_cells = [
+        Paragraph("SKY INTERNATIONAL SCHOOLS", title_style),
+        Paragraph("Email: info@skyschools.net | Hargeisa, Somaliland", sub_title_style),
+        Paragraph("'No Substitute For Self Discipline'", motto_style)
+    ]
+
+    if os.path.exists(logo_path):
+        logo_img = Image(logo_path, width=65, height=65)
+        header_table = Table([[logo_img, header_text_cells]], colWidths=[75, 465])
+        header_table.setStyle(TableStyle([
+            ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+            ('ALIGN', (0,0), (0,0), 'LEFT'),
+            ('PADDING', (0,0), (-1,-1), 0),
+        ]))
+        elements.append(header_table)
+    else:
+        # Fallback if image1.png is not found
+        title_style.alignment = 1
+        sub_title_style.alignment = 1
+        motto_style.alignment = 1
+        for item in header_text_cells:
+            elements.append(item)
+
+    elements.append(Spacer(1, 6))
+    elements.append(Paragraph("PROGRESS & ACHIEVEMENT REPORT", section_heading))
+    elements.append(Spacer(1, 8))
+
+    # 2. Metadata Block
     meta_data = [
         [f"Student Name: {student['student_name']}", f"Admission No: {student['adm_no']}"],
         [f"Class: {student['class_name']}", f"Assessment: {student.get('assessment_term', 'N/A')}"],
@@ -128,15 +198,16 @@ def create_student_pdf_buffer(student):
     ]
     t_meta = Table(meta_data, colWidths=[270, 270])
     t_meta.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,-1), colors.whitesmoke),
-        ('GRID', (0,0), (-1,-1), 0.5, colors.lightgrey),
-        ('PADDING', (0,0), (-1,-1), 5),
-        ('FONTSIZE', (0,0), (-1,-1), 9)
+        ('BACKGROUND', (0,0), (-1,-1), LIGHT_BG),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#CBD5E1')),
+        ('PADDING', (0,0), (-1,-1), 4),
+        ('FONTSIZE', (0,0), (-1,-1), 8.5),
+        ('FONTNAME', (0,0), (-1,-1), 'Helvetica-Bold')
     ]))
     elements.append(t_meta)
-    elements.append(Spacer(1, 12))
+    elements.append(Spacer(1, 10))
 
-    # 3. Marks & Grade Table
+    # 3. Subject Performance Table
     score_data = [["Subject", "Total Marks", "Marks Obtained", "Subject Grade", "Remarks", "Teacher"]]
     teachers = student.get("teachers") or {}
     if isinstance(teachers, str):
@@ -148,6 +219,7 @@ def create_student_pdf_buffer(student):
     total_score = 0
     count = 0
     scores_list = []
+    grades_list = []
 
     for sub in SUBJECTS:
         score = student.get(sub.lower(), 0.0)
@@ -156,6 +228,7 @@ def create_student_pdf_buffer(student):
         scores_list.append(score)
         
         grade, remark = get_grade_and_remark(score)
+        grades_list.append(grade)
         t_name = teachers.get(sub, "")
         score_data.append([sub, "100", f"{score:.1f}", grade, remark, t_name])
 
@@ -165,66 +238,107 @@ def create_student_pdf_buffer(student):
     score_data.append(["TOTAL MARKS", f"{total_score:.1f} / {count * 100}", "", "", "", ""])
     score_data.append(["AVERAGE PERCENTAGE", f"{avg_score:.2f}%", f"FINAL GRADE: {overall_grade}", "", "", ""])
 
-    t_scores = Table(score_data, colWidths=[100, 70, 90, 80, 100, 100])
+    t_scores = Table(score_data, colWidths=[90, 75, 95, 80, 100, 100])
     t_scores.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#003366')),
+        ('BACKGROUND', (0,0), (-1,0), HEADER_BLUE),
         ('TEXTCOLOR', (0,0), (-1,0), colors.whitesmoke),
         ('ALIGN', (0,0), (-1,-1), 'CENTER'),
-        ('GRID', (0,0), (-1,-1), 0.5, colors.grey),
-        ('BACKGROUND', (0,-2), (-1,-1), colors.HexColor('#EAEAEA')),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#94A3B8')),
+        ('BACKGROUND', (0,-2), (-1,-1), colors.HexColor('#E2E8F0')),
         ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
         ('FONTNAME', (0,-2), (-1,-1), 'Helvetica-Bold'),
-        ('PADDING', (0,0), (-1,-1), 4),
-        ('FONTSIZE', (0,0), (-1,-1), 8.5)
-    ]))
-    elements.append(t_scores)
-    elements.append(Spacer(1, 10))
-
-    # 4. Grading Scale Reference
-    scale_data = [
-        ["80-100", "70-79", "60-69", "50-59", "40-49", "0-39"],
-        ["A*", "A", "B", "C", "D", "E"]
-    ]
-    t_scale = Table(scale_data, colWidths=[90]*6)
-    t_scale.setStyle(TableStyle([
-        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
-        ('GRID', (0,0), (-1,-1), 0.5, colors.lightgrey),
-        ('BACKGROUND', (0,0), (-1,0), colors.whitesmoke),
+        ('SPAN', (1,-2), (5,-2)),
+        ('SPAN', (2,-1), (5,-1)),
+        ('PADDING', (0,0), (-1,-1), 3.5),
         ('FONTSIZE', (0,0), (-1,-1), 8)
     ]))
-    elements.append(t_scale)
-    elements.append(Spacer(1, 10))
+    elements.append(t_scores)
+    elements.append(Spacer(1, 8))
 
-    # 5. Performance Analysis Chart
-    drawing = Drawing(540, 130)
+    # 4. Grading System Key
+    scale_data = [
+        ["Grading System", "80-100", "70-79", "60-69", "50-59", "40-49", "0-39"],
+        ["Grade Scale", "A*", "A", "B", "C", "D", "E"]
+    ]
+    t_scale = Table(scale_data, colWidths=[90] + [75]*6)
+    t_scale.setStyle(TableStyle([
+        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#CBD5E1')),
+        ('BACKGROUND', (0,0), (-1,0), LIGHT_BG),
+        ('FONTNAME', (0,0), (0,-1), 'Helvetica-Bold'),
+        ('FONTSIZE', (0,0), (-1,-1), 7.5),
+        ('PADDING', (0,0), (-1,-1), 3)
+    ]))
+    elements.append(t_scale)
+    elements.append(Spacer(1, 8))
+
+    # 5. Performance Chart
+    elements.append(Paragraph("Subject Performance Analysis & Progress View", ParagraphStyle('ChartHeading', parent=styles['Normal'], fontName='Helvetica-Bold', fontSize=10, alignment=1, textColor=NAVY)))
+    elements.append(Spacer(1, 4))
+
+    drawing_w, drawing_h = 540, 125
+    drawing = Drawing(drawing_w, drawing_h)
+    
     bc = VerticalBarChart()
     bc.x = 35
-    bc.y = 20
-    bc.height = 90
-    bc.width = 470
+    bc.y = 18
+    bc.height = 85
+    bc.width = 480
     bc.data = [scores_list]
     bc.categoryAxis.categoryNames = SUBJECTS
     bc.categoryAxis.labels.fontSize = 7
     bc.categoryAxis.labels.dy = -10
+    bc.categoryAxis.labels.fontName = 'Helvetica'
     bc.valueAxis.valueMin = 0
     bc.valueAxis.valueMax = 100
     bc.valueAxis.valueStep = 20
-    bc.bars[0].fillColor = colors.HexColor('#1F77B4')
+    bc.valueAxis.labels.fontSize = 7
+    bc.bars[0].fillColor = colors.HexColor('#2563EB')
+    bc.bars[0].strokeColor = colors.HexColor('#1D4ED8')
+    bc.bars[0].strokeWidth = 0.5
+    
     drawing.add(bc)
-    elements.append(drawing)
-    elements.append(Spacer(1, 10))
 
-    # 6. Remarks & Signatures
+    n_bars = len(scores_list)
+    bar_group_width = bc.width / float(n_bars)
+    points = []
+    
+    for i, (score, grade) in enumerate(zip(scores_list, grades_list)):
+        center_x = bc.x + (i + 0.5) * bar_group_width
+        val_clamped = min(max(score, 0), 100)
+        center_y = bc.y + (val_clamped / 100.0) * bc.height
+        points.extend([center_x, center_y])
+
+        label_y = min(center_y + 4, bc.y + bc.height + 2)
+        drawing.add(String(center_x, label_y, grade, fontName='Helvetica-Bold', fontSize=7.5, textAnchor='middle', fillColor=colors.HexColor('#991B1B')))
+
+    if len(points) >= 4:
+        drawing.add(PolyLine(points, strokeColor=LINE_ORANGE, strokeWidth=1.5))
+
+    elements.append(drawing)
+    elements.append(Spacer(1, 8))
+
+    # 6. Remarks & Signatures Section
     remark_text = "Very good effort. Consistently strong results this term." if avg_score >= 70 else "Fair performance. Needs additional effort next term."
+    
+    teacher_sig = student.get('class_teacher') or "Tr. Assigned"
+    principal_sig = student.get('principal_name') or "School Administration"
+
     sig_data = [
-        [f"Teacher Remarks: \"{remark_text}\"", ""],
-        [f"Class Teacher Signature: {student.get('class_teacher', 'N/A')}", f"Principal Signature: {student.get('principal_name', 'N/A')}"]
+        [Paragraph(f"<b>Teacher Remarks:</b> <i>\"{remark_text}\"</i>", styles['Normal']), ""],
+        [Spacer(1, 10), Spacer(1, 10)],
+        [
+            Paragraph(f"<b>Class Teacher Signature:</b> <u>{teacher_sig}</u>", styles['Normal']),
+            Paragraph(f"<b>Principal Signature:</b> <u>{principal_sig}</u>", styles['Normal'])
+        ]
     ]
-    t_sig = Table(sig_data, colWidths=[300, 240])
+    t_sig = Table(sig_data, colWidths=[270, 270])
     t_sig.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('FONTSIZE', (0,0), (-1,-1), 9),
-        ('PADDING', (0,0), (-1,-1), 4)
+        ('SPAN', (0,0), (1,0)),
+        ('SPAN', (0,1), (1,1)),
+        ('PADDING', (0,0), (-1,-1), 2),
+        ('FONTSIZE', (0,0), (-1,-1), 8.5)
     ]))
     elements.append(t_sig)
 

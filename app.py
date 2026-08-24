@@ -13,6 +13,8 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib import colors
+from reportlab.graphics.shapes import Drawing, String, Line
+from reportlab.graphics.charts.barcharts import VerticalBarChart
 
 load_dotenv()
 
@@ -38,7 +40,6 @@ def init_db():
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        
         
         cur.execute('''
             CREATE TABLE IF NOT EXISTS users (
@@ -83,11 +84,161 @@ with app.app_context():
     init_db()
 
 
+def get_grade_and_remark(score):
+    if score >= 80:
+        return 'A*', 'Excellent'
+    elif score >= 70:
+        return 'A', 'Very Good'
+    elif score >= 60:
+        return 'B', 'Good'
+    elif score >= 50:
+        return 'C', 'Satisfactory'
+    elif score >= 40:
+        return 'D', 'Pass'
+    else:
+        return 'E', 'Needs Improvement'
+
+
+def create_student_pdf_buffer(student):
+    buffer = io.BytesIO()
+    doc = SimpleDocTemplate(
+        buffer,
+        pagesize=letter,
+        leftMargin=36,
+        rightMargin=36,
+        topMargin=25,
+        bottomMargin=25
+    )
+    styles = getSampleStyleSheet()
+    elements = []
+
+    # 1. School Header & Title Banner
+    elements.append(Paragraph("<font size=16 color='#003366'><b>SKY INTERNATIONAL SCHOOLS</b></font>", styles['Title']))
+    elements.append(Paragraph("<font size=9>Email: info@skyschools.net | Hargeisa, Somaliland</font>", styles['Normal']))
+    elements.append(Paragraph("<font size=9><i>'No Substitute For Self Discipline'</i></font>", styles['Normal']))
+    elements.append(Spacer(1, 8))
+    elements.append(Paragraph("<b>PROGRESS & ACHIEVEMENT REPORT</b>", styles['Heading2']))
+    elements.append(Spacer(1, 10))
+
+    # 2. Student Metadata Table
+    meta_data = [
+        [f"Student Name: {student['student_name']}", f"Admission No: {student['adm_no']}"],
+        [f"Class: {student['class_name']}", f"Assessment: {student.get('assessment_term', 'N/A')}"],
+        [f"Opening Date: {student.get('opening_date', 'N/A')}", f"Closing Date: {student.get('closing_date', 'N/A')}"]
+    ]
+    t_meta = Table(meta_data, colWidths=[270, 270])
+    t_meta.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,-1), colors.whitesmoke),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.lightgrey),
+        ('PADDING', (0,0), (-1,-1), 5),
+        ('FONTSIZE', (0,0), (-1,-1), 9)
+    ]))
+    elements.append(t_meta)
+    elements.append(Spacer(1, 12))
+
+    # 3. Marks & Grade Table
+    score_data = [["Subject", "Total Marks", "Marks Obtained", "Subject Grade", "Remarks", "Teacher"]]
+    teachers = student.get("teachers") or {}
+    if isinstance(teachers, str):
+        try:
+            teachers = json.loads(teachers)
+        except Exception:
+            teachers = {}
+
+    total_score = 0
+    count = 0
+    scores_list = []
+
+    for sub in SUBJECTS:
+        score = student.get(sub.lower(), 0.0)
+        total_score += score
+        count += 1
+        scores_list.append(score)
+        
+        grade, remark = get_grade_and_remark(score)
+        t_name = teachers.get(sub, "")
+        score_data.append([sub, "100", f"{score:.1f}", grade, remark, t_name])
+
+    avg_score = total_score / count if count > 0 else 0
+    overall_grade, _ = get_grade_and_remark(avg_score)
+    
+    score_data.append(["TOTAL MARKS", f"{total_score:.1f} / {count * 100}", "", "", "", ""])
+    score_data.append(["AVERAGE PERCENTAGE", f"{avg_score:.2f}%", f"FINAL GRADE: {overall_grade}", "", "", ""])
+
+    t_scores = Table(score_data, colWidths=[100, 70, 90, 80, 100, 100])
+    t_scores.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#003366')),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.whitesmoke),
+        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.grey),
+        ('BACKGROUND', (0,-2), (-1,-1), colors.HexColor('#EAEAEA')),
+        ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
+        ('FONTNAME', (0,-2), (-1,-1), 'Helvetica-Bold'),
+        ('PADDING', (0,0), (-1,-1), 4),
+        ('FONTSIZE', (0,0), (-1,-1), 8.5)
+    ]))
+    elements.append(t_scores)
+    elements.append(Spacer(1, 10))
+
+    # 4. Grading Scale Reference
+    scale_data = [
+        ["80-100", "70-79", "60-69", "50-59", "40-49", "0-39"],
+        ["A*", "A", "B", "C", "D", "E"]
+    ]
+    t_scale = Table(scale_data, colWidths=[90]*6)
+    t_scale.setStyle(TableStyle([
+        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.lightgrey),
+        ('BACKGROUND', (0,0), (-1,0), colors.whitesmoke),
+        ('FONTSIZE', (0,0), (-1,-1), 8)
+    ]))
+    elements.append(t_scale)
+    elements.append(Spacer(1, 10))
+
+    # 5. Performance Analysis Chart
+    drawing = Drawing(540, 130)
+    bc = VerticalBarChart()
+    bc.x = 35
+    bc.y = 20
+    bc.height = 90
+    bc.width = 470
+    bc.data = [scores_list]
+    bc.categoryAxis.categoryNames = SUBJECTS
+    bc.categoryAxis.labels.fontSize = 7
+    bc.categoryAxis.labels.dy = -10
+    bc.valueAxis.valueMin = 0
+    bc.valueAxis.valueMax = 100
+    bc.valueAxis.valueStep = 20
+    bc.bars[0].fillColor = colors.HexColor('#1F77B4')
+    drawing.add(bc)
+    elements.append(drawing)
+    elements.append(Spacer(1, 10))
+
+    # 6. Remarks & Signatures
+    remark_text = "Very good effort. Consistently strong results this term." if avg_score >= 70 else "Fair performance. Needs additional effort next term."
+    sig_data = [
+        [f"Teacher Remarks: \"{remark_text}\"", ""],
+        [f"Class Teacher Signature: {student.get('class_teacher', 'N/A')}", f"Principal Signature: {student.get('principal_name', 'N/A')}"]
+    ]
+    t_sig = Table(sig_data, colWidths=[300, 240])
+    t_sig.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('FONTSIZE', (0,0), (-1,-1), 9),
+        ('PADDING', (0,0), (-1,-1), 4)
+    ]))
+    elements.append(t_sig)
+
+    doc.build(elements)
+    buffer.seek(0)
+    return buffer
+
+
 @app.route("/")
 def index():
     if "username" in session:
         return redirect(url_for("dashboard"))
     return render_template("login.html")
+
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -249,68 +400,6 @@ def save_student():
 
     flash(f"Record for {student_name} saved successfully!", "success")
     return redirect(url_for("dashboard"))
-
-
-def create_student_pdf_buffer(student):
-    buffer = io.BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=letter, leftMargin=36, rightMargin=36, topMargin=36, bottomMargin=36)
-    styles = getSampleStyleSheet()
-    elements = []
-
-    elements.append(Paragraph("<b>SKY SCHOOLS ACADEMIC REPORT CARD</b>", styles['Title']))
-    elements.append(Spacer(1, 10))
-
-    meta_data = [
-        [f"Student Name: {student['student_name']}", f"Adm No: {student['adm_no']}"],
-        [f"Class: {student['class_name']}", f"Term: {student['assessment_term']}"],
-        [f"Opening Date: {student['opening_date']}", f"Closing Date: {student['closing_date']}"],
-        [f"Class Teacher: {student.get('class_teacher', 'N/A')}", f"Principal: {student.get('principal_name', 'N/A')}"]
-    ]
-    t_meta = Table(meta_data, colWidths=[270, 270])
-    t_meta.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,-1), colors.whitesmoke),
-        ('GRID', (0,0), (-1,-1), 0.5, colors.grey),
-        ('PADDING', (0,0), (-1,-1), 6)
-    ]))
-    elements.append(t_meta)
-    elements.append(Spacer(1, 15))
-
-    score_data = [["Subject", "Score", "Subject Teacher"]]
-    teachers = student.get("teachers") or {}
-    if isinstance(teachers, str):
-        try:
-            teachers = json.loads(teachers)
-        except Exception:
-            teachers = {}
-
-    total_score = 0
-    count = 0
-
-    for sub in SUBJECTS:
-        score = student.get(sub.lower(), 0.0)
-        total_score += score
-        count += 1
-        t_name = teachers.get(sub, "")
-        score_data.append([sub, f"{score:.1f}", t_name])
-
-    avg_score = total_score / count if count > 0 else 0
-    score_data.append(["TOTAL / AVERAGE", f"Total: {total_score:.1f}", f"Average: {avg_score:.1f}%"])
-
-    t_scores = Table(score_data, colWidths=[180, 160, 200])
-    t_scores.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,0), colors.navy),
-        ('TEXTCOLOR', (0,0), (-1,0), colors.whitesmoke),
-        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
-        ('GRID', (0,0), (-1,-1), 0.5, colors.black),
-        ('BACKGROUND', (0,-1), (-1,-1), colors.lightgrey),
-        ('FONTNAME', (0,-1), (-1,-1), 'Helvetica-Bold'),
-        ('PADDING', (0,0), (-1,-1), 6)
-    ]))
-    elements.append(t_scores)
-
-    doc.build(elements)
-    buffer.seek(0)
-    return buffer
 
 
 @app.route("/generate_pdf/<adm_no>")

@@ -8,6 +8,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
 
 import openpyxl
+from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
+from openpyxl.utils import get_column_letter
+
 from pypdf import PdfWriter
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
@@ -337,40 +340,42 @@ def create_student_pdf_buffer(student):
         textColor=colors.HexColor('#1E293B')
     )
 
-    remark_text = "Good results, but with additional focus higher scores are reachable." if avg_score < 80 else "Excellent academic results. Consistently strong performance this term."
+    remark_text = "Very good effort. Consistently strong results this term." if avg_score >= 70 else "Good results, but with additional focus higher scores are reachable."
     
-    teacher_sig = student.get('class_teacher') or "N/A"
-    principal_sig = student.get('principal_name') or "N/A"
+    teacher_sig = student.get('class_teacher') or "None"
+    principal_sig = student.get('principal_name') or "None"
 
     elements.append(Paragraph("Teacher Remarks", remark_heading_style))
     elements.append(Spacer(1, 4))
 
-    # Boxed container for remarks
+    # Light background boxed container for teacher remark
     box_data = [[Paragraph(f'"{remark_text}"', remark_text_style)]]
     t_box = Table(box_data, colWidths=[540])
     t_box.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,-1), colors.HexColor('#EFF4F8')),
+        ('BACKGROUND', (0,0), (-1,-1), colors.HexColor('#F1F5F9')),
         ('BOX', (0,0), (-1,-1), 0.5, colors.HexColor('#CBD5E1')),
         ('PADDING', (0,0), (-1,-1), 6),
     ]))
     elements.append(t_box)
-    elements.append(Spacer(1, 18))
+    elements.append(Spacer(1, 16))
 
-    # Signature lines layout
+    # Clean 2-column signature layout matching the target image
+    sig_line = "_____________________________________"
     sig_data = [
         [
-            Paragraph("<b>Signature:</b> ___________________________", styles['Normal']),
-            Paragraph("_______________________________________", styles['Normal'])
+            Paragraph(f"<b>Signature:</b> {sig_line}", styles['Normal']),
+            Paragraph(sig_line, styles['Normal'])
         ],
         [
             Paragraph(f"<b>Class Teacher:</b> {teacher_sig}", styles['Normal']),
             Paragraph(f"<b>Principal:</b> {principal_sig}", styles['Normal'])
         ]
     ]
+
     t_sig = Table(sig_data, colWidths=[270, 270])
     t_sig.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
-        ('PADDING', (0,0), (-1,-1), 3),
+        ('PADDING', (0,0), (-1,-1), 2),
         ('FONTSIZE', (0,0), (-1,-1), 9),
     ]))
     elements.append(t_sig)
@@ -612,7 +617,7 @@ def export_excel():
     conn = get_db_connection()
     cur = conn.cursor()
     try:
-        cur.execute("SELECT * FROM students WHERE class_name = %s ORDER BY student_name ASC;", (class_name,))
+        cur.execute("SELECT * FROM students WHERE class_name = %s;", (class_name,))
         students = cur.fetchall()
     finally:
         cur.close()
@@ -622,29 +627,105 @@ def export_excel():
         flash("No students found to export.", "warning")
         return redirect(url_for("dashboard"))
 
-    wb = openpyxl.Workbook()
-    ws = wb.active
-    ws.title = f"Class {class_name}"
-
-    headers = ["Adm No", "Student Name", "Class", "Term"] + SUBJECTS + ["Total Score", "Average (%)"]
-    ws.append(headers)
-
+    # Calculate totals, averages, and grades first for sorting
+    processed_students = []
     for st in students:
-        row = [st["adm_no"], st["student_name"], st["class_name"], st.get("assessment_term", "")]
         total = 0
+        subject_scores = []
         for sub in SUBJECTS:
             val = st.get(sub.lower(), 0.0)
-            row.append(val)
+            subject_scores.append(val)
             total += val
-        avg = total / len(SUBJECTS)
-        row.extend([total, round(avg, 2)])
-        ws.append(row)
+        
+        avg = total / len(SUBJECTS) if SUBJECTS else 0.0
+        grade, _ = get_grade_and_remark(avg)
+        
+        processed_students.append({
+            "adm_no": st["adm_no"],
+            "student_name": st["student_name"],
+            "class_name": st["class_name"],
+            "term": st.get("assessment_term", ""),
+            "scores": subject_scores,
+            "total": total,
+            "avg": round(avg, 2),
+            "grade": grade
+        })
+
+    # Sort students by Total Score in descending order
+    processed_students.sort(key=lambda x: x["total"], reverse=True)
+
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = f"MARKLIST_{class_name.upper()}"
+
+    headers = ["Adm No", "Student Name", "Class", "Term"] + SUBJECTS + ["Total Score", "Average (%)", "Grade"]
+    max_col = len(headers)
+
+    # 1. Main Title Row
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=max_col)
+    title_cell = ws.cell(row=1, column=1, value="SKY SCHOOLS INTERNATIONAL")
+    title_cell.font = Font(name="Calibri", size=16, bold=True)
+    title_cell.alignment = Alignment(horizontal="center", vertical="center")
+
+    # 2. Sub-Header Row
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=max_col)
+    sub_title_cell = ws.cell(row=2, column=1, value=f"MARKLIST_{class_name.upper()}")
+    sub_title_cell.font = Font(name="Calibri", size=12, bold=True)
+    sub_title_cell.alignment = Alignment(horizontal="center", vertical="center")
+
+    # 3. Table Headers Row
+    ws.append([]) # Row 3 placement
+    header_fill = PatternFill(start_color="1E3A8A", end_color="1E3A8A", fill_type="solid")
+    header_font = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
+
+    for col_num, header_title in enumerate(headers, 1):
+        cell = ws.cell(row=3, column=col_num, value=header_title)
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(horizontal="center" if col_num > 2 else "left", vertical="center")
+
+    # 4. Data Rows
+    thin_border = Border(
+        left=Side(style='thin', color='CBD5E1'),
+        right=Side(style='thin', color='CBD5E1'),
+        top=Side(style='thin', color='CBD5E1'),
+        bottom=Side(style='thin', color='CBD5E1')
+    )
+
+    for row_idx, st in enumerate(processed_students, start=4):
+        row_data = [
+            st["adm_no"],
+            st["student_name"],
+            st["class_name"],
+            st["term"]
+        ] + st["scores"] + [st["total"], st["avg"], st["grade"]]
+        
+        for col_idx, val in enumerate(row_data, start=1):
+            cell = ws.cell(row=row_idx, column=col_idx, value=val)
+            cell.font = Font(name="Calibri", size=10)
+            cell.border = thin_border
+            
+            if col_idx in [1, 3, 4] or col_idx >= 5:
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+            else:
+                cell.alignment = Alignment(horizontal="left", vertical="center")
+
+    # Auto-fit Column Widths
+    for col in ws.columns:
+        max_len = max(len(str(cell.value or '')) for cell in col)
+        col_letter = get_column_letter(col[0].column)
+        ws.column_dimensions[col_letter].width = max(max_len + 3, 10)
 
     buffer = io.BytesIO()
     wb.save(buffer)
     buffer.seek(0)
 
-    return send_file(buffer, as_attachment=True, download_name=f"Marklist_{class_name}.xlsx", mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    return send_file(
+        buffer,
+        as_attachment=True,
+        download_name=f"MARKLIST_{class_name}.xlsx",
+        mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
 
 
 if __name__ == "__main__":

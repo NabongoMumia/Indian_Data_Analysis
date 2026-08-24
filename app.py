@@ -123,7 +123,7 @@ def create_student_pdf_buffer(student):
         fontSize=18,
         leading=22,
         textColor=NAVY,
-        alignment=0  # Left-aligned inside header cell
+        alignment=0
     )
     
     sub_title_style = ParagraphStyle(
@@ -159,9 +159,9 @@ def create_student_pdf_buffer(student):
     elements = []
 
     # 1. Top Header with Logo inserted on Left
-    logo_path = os.path.join(app.root_path, 'image1.png')
+    logo_path = os.path.join(app.root_path, 'lmage1.png')
     if not os.path.exists(logo_path):
-        logo_path = os.path.join(app.root_path, 'static', 'image1.png')
+        logo_path = os.path.join(app.root_path, 'static', 'lmage1.png')
 
     header_text_cells = [
         Paragraph("SKY INTERNATIONAL SCHOOLS", title_style),
@@ -179,7 +179,6 @@ def create_student_pdf_buffer(student):
         ]))
         elements.append(header_table)
     else:
-        # Fallback if image1.png is not found
         title_style.alignment = 1
         sub_title_style.alignment = 1
         motto_style.alignment = 1
@@ -276,13 +275,13 @@ def create_student_pdf_buffer(student):
     elements.append(Paragraph("Subject Performance Analysis & Progress View", ParagraphStyle('ChartHeading', parent=styles['Normal'], fontName='Helvetica-Bold', fontSize=10, alignment=1, textColor=NAVY)))
     elements.append(Spacer(1, 4))
 
-    drawing_w, drawing_h = 540, 125
+    drawing_w, drawing_h = 540, 115
     drawing = Drawing(drawing_w, drawing_h)
     
     bc = VerticalBarChart()
     bc.x = 35
     bc.y = 18
-    bc.height = 85
+    bc.height = 75
     bc.width = 480
     bc.data = [scores_list]
     bc.categoryAxis.categoryNames = SUBJECTS
@@ -316,29 +315,63 @@ def create_student_pdf_buffer(student):
         drawing.add(PolyLine(points, strokeColor=LINE_ORANGE, strokeWidth=1.5))
 
     elements.append(drawing)
-    elements.append(Spacer(1, 8))
+    elements.append(Spacer(1, 10))
 
-    # 6. Remarks & Signatures Section
-    remark_text = "Very good effort. Consistently strong results this term." if avg_score >= 70 else "Fair performance. Needs additional effort next term."
+    # 6. Teacher Remarks & Signatures Section
+    remark_heading_style = ParagraphStyle(
+        'RemarkHeader',
+        parent=styles['Normal'],
+        fontName='Helvetica-Bold',
+        fontSize=11,
+        leading=13,
+        textColor=NAVY,
+        alignment=1
+    )
     
-    teacher_sig = student.get('class_teacher') or "Tr. Assigned"
-    principal_sig = student.get('principal_name') or "School Administration"
+    remark_text_style = ParagraphStyle(
+        'RemarkText',
+        parent=styles['Normal'],
+        fontName='Helvetica-Oblique',
+        fontSize=9,
+        leading=12,
+        textColor=colors.HexColor('#1E293B')
+    )
 
+    remark_text = "Good results, but with additional focus higher scores are reachable." if avg_score < 80 else "Excellent academic results. Consistently strong performance this term."
+    
+    teacher_sig = student.get('class_teacher') or "N/A"
+    principal_sig = student.get('principal_name') or "N/A"
+
+    elements.append(Paragraph("Teacher Remarks", remark_heading_style))
+    elements.append(Spacer(1, 4))
+
+    # Boxed container for remarks
+    box_data = [[Paragraph(f'"{remark_text}"', remark_text_style)]]
+    t_box = Table(box_data, colWidths=[540])
+    t_box.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,-1), colors.HexColor('#EFF4F8')),
+        ('BOX', (0,0), (-1,-1), 0.5, colors.HexColor('#CBD5E1')),
+        ('PADDING', (0,0), (-1,-1), 6),
+    ]))
+    elements.append(t_box)
+    elements.append(Spacer(1, 18))
+
+    # Signature lines layout
     sig_data = [
-        [Paragraph(f"<b>Teacher Remarks:</b> <i>\"{remark_text}\"</i>", styles['Normal']), ""],
-        [Spacer(1, 10), Spacer(1, 10)],
         [
-            Paragraph(f"<b>Class Teacher Signature:</b> <u>{teacher_sig}</u>", styles['Normal']),
-            Paragraph(f"<b>Principal Signature:</b> <u>{principal_sig}</u>", styles['Normal'])
+            Paragraph("<b>Signature:</b> ___________________________", styles['Normal']),
+            Paragraph("_______________________________________", styles['Normal'])
+        ],
+        [
+            Paragraph(f"<b>Class Teacher:</b> {teacher_sig}", styles['Normal']),
+            Paragraph(f"<b>Principal:</b> {principal_sig}", styles['Normal'])
         ]
     ]
     t_sig = Table(sig_data, colWidths=[270, 270])
     t_sig.setStyle(TableStyle([
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('SPAN', (0,0), (1,0)),
-        ('SPAN', (0,1), (1,1)),
-        ('PADDING', (0,0), (-1,-1), 2),
-        ('FONTSIZE', (0,0), (-1,-1), 8.5)
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('PADDING', (0,0), (-1,-1), 3),
+        ('FONTSIZE', (0,0), (-1,-1), 9),
     ]))
     elements.append(t_sig)
 

@@ -30,13 +30,14 @@ def get_db_connection():
     if db_url.startswith("postgres://"):
         db_url = db_url.replace("postgres://", "postgresql://", 1)
         
-    return psycopg2.connect(db_url, cursor_factory=RealDictCursor)
+    return psycopg2.connect(db_url, cursor_factory=RealDictCursor, sslmode='require')
 
 
 def init_db():
+    conn = None
     try:
         conn = get_db_connection()
-        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur = conn.cursor()
         
         cur.execute('''
             CREATE TABLE IF NOT EXISTS users (
@@ -70,9 +71,11 @@ def init_db():
         ''')
         conn.commit()
         cur.close()
-        conn.close()
     except Exception as e:
         print(f"Database initialization error: {e}")
+    finally:
+        if conn:
+            conn.close()
 
 
 with app.app_context():
@@ -85,7 +88,6 @@ def index():
         return redirect(url_for("dashboard"))
     return render_template("login.html")
 
-
 @app.route("/login", methods=["POST"])
 def login():
     action = request.form.get("action")
@@ -97,41 +99,40 @@ def login():
         return redirect(url_for("index"))
 
     conn = get_db_connection()
-    cur = conn.cursor(cursor_factory=RealDictCursor)
+    cur = conn.cursor()
 
-    if action == "register":
-        cur.execute("SELECT id FROM users WHERE username = %s;", (username,))
-        if cur.fetchone():
-            flash("Username already exists.", "warning")
-        else:
-            hashed_pw = generate_password_hash(password)
-            cur.execute("INSERT INTO users (username, password) VALUES (%s, %s);", (username, hashed_pw))
-            conn.commit()
-            session["username"] = username
-            flash("Account registered successfully!", "success")
-            cur.close()
-            conn.close()
-            return redirect(url_for("dashboard"))
+    try:
+        if action == "register":
+            cur.execute("SELECT id FROM users WHERE username = %s;", (username,))
+            if cur.fetchone():
+                flash("Username already exists.", "warning")
+            else:
+                hashed_pw = generate_password_hash(password)
+                cur.execute("INSERT INTO users (username, password) VALUES (%s, %s);", (username, hashed_pw))
+                conn.commit()
+                session["username"] = username
+                flash("Account registered successfully!", "success")
+                return redirect(url_for("dashboard"))
 
-    elif action == "login":
-        cur.execute("SELECT * FROM users WHERE username = %s;", (username,))
-        user = cur.fetchone()
-        
-        if user:
-            user_pw = user["password"] if isinstance(user, dict) else user[2]
-            if check_password_hash(user_pw, password):
+        elif action == "login":
+            cur.execute("SELECT * FROM users WHERE username = %s;", (username,))
+            user = cur.fetchone()
+            
+            if user and check_password_hash(user["password"], password):
                 session["username"] = username
                 flash("Logged in successfully!", "success")
-                cur.close()
-                conn.close()
                 return redirect(url_for("dashboard"))
             else:
                 flash("Invalid credentials.", "danger")
-        else:
-            flash("Invalid credentials.", "danger")
 
-    cur.close()
-    conn.close()
+    except Exception as e:
+        conn.rollback()
+        print(f"Login/Register Error: {e}")
+        flash(f"An unexpected error occurred: {str(e)}", "danger")
+    finally:
+        cur.close()
+        conn.close()
+
     return redirect(url_for("index"))
 
 
@@ -148,11 +149,13 @@ def dashboard():
         return redirect(url_for("index"))
 
     conn = get_db_connection()
-    cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute("SELECT DISTINCT class_name FROM students WHERE class_name IS NOT NULL AND class_name != '';")
-    classes = [row["class_name"] for row in cur.fetchall()]
-    cur.close()
-    conn.close()
+    cur = conn.cursor()
+    try:
+        cur.execute("SELECT DISTINCT class_name FROM students WHERE class_name IS NOT NULL AND class_name != '';")
+        classes = [row["class_name"] for row in cur.fetchall()]
+    finally:
+        cur.close()
+        conn.close()
 
     return render_template("dashboard.html", username=session["username"], subjects=SUBJECTS, classes=classes)
 
@@ -163,11 +166,13 @@ def get_student(adm_no):
         return jsonify({"found": False, "error": "Unauthorized"}), 401
 
     conn = get_db_connection()
-    cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute("SELECT * FROM students WHERE adm_no = %s;", (adm_no,))
-    student = cur.fetchone()
-    cur.close()
-    conn.close()
+    cur = conn.cursor()
+    try:
+        cur.execute("SELECT * FROM students WHERE adm_no = %s;", (adm_no,))
+        student = cur.fetchone()
+    finally:
+        cur.close()
+        conn.close()
 
     if student:
         student["found"] = True
@@ -201,44 +206,45 @@ def save_student():
         teachers[sub] = request.form.get(f"teacher_{sub}", "")
 
     conn = get_db_connection()
-    cur = conn.cursor(cursor_factory=RealDictCursor)
+    cur = conn.cursor()
 
-    cur.execute("""
-        INSERT INTO students (
+    try:
+        cur.execute("""
+            INSERT INTO students (
+                adm_no, student_name, class_name, assessment_term, opening_date, closing_date,
+                class_teacher, principal_name, english, maths, chemistry, biology, ict,
+                physics, business, geography, islamiyat, teachers
+            )
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            ON CONFLICT (adm_no) DO UPDATE SET
+                student_name = EXCLUDED.student_name,
+                class_name = EXCLUDED.class_name,
+                assessment_term = EXCLUDED.assessment_term,
+                opening_date = EXCLUDED.opening_date,
+                closing_date = EXCLUDED.closing_date,
+                class_teacher = EXCLUDED.class_teacher,
+                principal_name = EXCLUDED.principal_name,
+                english = EXCLUDED.english,
+                maths = EXCLUDED.maths,
+                chemistry = EXCLUDED.chemistry,
+                biology = EXCLUDED.biology,
+                ict = EXCLUDED.ict,
+                physics = EXCLUDED.physics,
+                business = EXCLUDED.business,
+                geography = EXCLUDED.geography,
+                islamiyat = EXCLUDED.islamiyat,
+                teachers = EXCLUDED.teachers;
+        """, (
             adm_no, student_name, class_name, assessment_term, opening_date, closing_date,
-            class_teacher, principal_name, english, maths, chemistry, biology, ict,
-            physics, business, geography, islamiyat, teachers
-        )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-        ON CONFLICT (adm_no) DO UPDATE SET
-            student_name = EXCLUDED.student_name,
-            class_name = EXCLUDED.class_name,
-            assessment_term = EXCLUDED.assessment_term,
-            opening_date = EXCLUDED.opening_date,
-            closing_date = EXCLUDED.closing_date,
-            class_teacher = EXCLUDED.class_teacher,
-            principal_name = EXCLUDED.principal_name,
-            english = EXCLUDED.english,
-            maths = EXCLUDED.maths,
-            chemistry = EXCLUDED.chemistry,
-            biology = EXCLUDED.biology,
-            ict = EXCLUDED.ict,
-            physics = EXCLUDED.physics,
-            business = EXCLUDED.business,
-            geography = EXCLUDED.geography,
-            islamiyat = EXCLUDED.islamiyat,
-            teachers = EXCLUDED.teachers;
-    """, (
-        adm_no, student_name, class_name, assessment_term, opening_date, closing_date,
-        class_teacher, principal_name, scores.get("english", 0), scores.get("maths", 0),
-        scores.get("chemistry", 0), scores.get("biology", 0), scores.get("ict", 0),
-        scores.get("physics", 0), scores.get("business", 0), scores.get("geography", 0),
-        scores.get("islamiyat", 0), json.dumps(teachers)
-    ))
-
-    conn.commit()
-    cur.close()
-    conn.close()
+            class_teacher, principal_name, scores.get("english", 0), scores.get("maths", 0),
+            scores.get("chemistry", 0), scores.get("biology", 0), scores.get("ict", 0),
+            scores.get("physics", 0), scores.get("business", 0), scores.get("geography", 0),
+            scores.get("islamiyat", 0), json.dumps(teachers)
+        ))
+        conn.commit()
+    finally:
+        cur.close()
+        conn.close()
 
     flash(f"Record for {student_name} saved successfully!", "success")
     return redirect(url_for("dashboard"))
@@ -270,6 +276,12 @@ def create_student_pdf_buffer(student):
 
     score_data = [["Subject", "Score", "Subject Teacher"]]
     teachers = student.get("teachers") or {}
+    if isinstance(teachers, str):
+        try:
+            teachers = json.loads(teachers)
+        except Exception:
+            teachers = {}
+
     total_score = 0
     count = 0
 
@@ -306,11 +318,13 @@ def generate_pdf(adm_no):
         return redirect(url_for("index"))
 
     conn = get_db_connection()
-    cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute("SELECT * FROM students WHERE adm_no = %s;", (adm_no,))
-    student = cur.fetchone()
-    cur.close()
-    conn.close()
+    cur = conn.cursor()
+    try:
+        cur.execute("SELECT * FROM students WHERE adm_no = %s;", (adm_no,))
+        student = cur.fetchone()
+    finally:
+        cur.close()
+        conn.close()
 
     if not student:
         flash("Student record not found.", "danger")
@@ -327,11 +341,13 @@ def download_class_pdf():
 
     class_name = request.form.get("class_name")
     conn = get_db_connection()
-    cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute("SELECT * FROM students WHERE class_name = %s ORDER BY student_name ASC;", (class_name,))
-    students = cur.fetchall()
-    cur.close()
-    conn.close()
+    cur = conn.cursor()
+    try:
+        cur.execute("SELECT * FROM students WHERE class_name = %s ORDER BY student_name ASC;", (class_name,))
+        students = cur.fetchall()
+    finally:
+        cur.close()
+        conn.close()
 
     if not students:
         flash("No students found for this class.", "warning")
@@ -357,11 +373,13 @@ def export_excel():
 
     class_name = request.form.get("class_name")
     conn = get_db_connection()
-    cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute("SELECT * FROM students WHERE class_name = %s ORDER BY student_name ASC;", (class_name,))
-    students = cur.fetchall()
-    cur.close()
-    conn.close()
+    cur = conn.cursor()
+    try:
+        cur.execute("SELECT * FROM students WHERE class_name = %s ORDER BY student_name ASC;", (class_name,))
+        students = cur.fetchall()
+    finally:
+        cur.close()
+        conn.close()
 
     if not students:
         flash("No students found to export.", "warning")

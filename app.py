@@ -39,6 +39,8 @@ def init_db():
         conn = get_db_connection()
         cur = conn.cursor()
         
+        cur.execute('DROP TABLE IF EXISTS users CASCADE;')
+        
         cur.execute('''
             CREATE TABLE IF NOT EXISTS users (
                 id SERIAL PRIMARY KEY,

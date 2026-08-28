@@ -189,7 +189,7 @@ def create_student_pdf_buffer(student):
             elements.append(item)
 
     elements.append(Spacer(1, 6))
-    elements.append(Paragraph("PROGRESS & ACHIEVEMENT REPORT", section_heading))
+    elements.append(Paragraph("SECONDARY PROGRESS & ACHIEVEMENT REPORT", section_heading))
     elements.append(Spacer(1, 8))
 
     # 2. Metadata Block
@@ -208,7 +208,21 @@ def create_student_pdf_buffer(student):
     ]))
     elements.append(t_meta)
     elements.append(Spacer(1, 10))
-
+    
+    # --- ADD TITLE HERE ---
+    table_title_style = ParagraphStyle(
+        'TableTitle',
+        parent=styles['Heading2'],
+        fontName='Helvetica-Bold',
+        fontSize=11,
+        leading=13,
+        textColor=NAVY,
+        alignment=0  # Left-aligned (use 1 for centered if preferred)
+    )
+    elements.append(Paragraph("Official Academic Progress", table_title_style))
+    elements.append(Spacer(1, 4))
+    # ----------------------
+    
     # 3. Subject Performance Table
     score_data = [["Subject", "Total Marks", "Marks Obtained", "Subject Grade", "Remarks", "Teacher"]]
     teachers = student.get("teachers") or {}

@@ -163,8 +163,13 @@ def create_student_pdf_buffer(student):
 
     # 1. Top Header with Logo inserted on Left
     logo_path = os.path.join(app.root_path, 'Image1.png')
+    print("--- DEBUG: Root logo path:", logo_path)
+    print("--- DEBUG: Exists in root?", os.path.exists(logo_path))
+
     if not os.path.exists(logo_path):
         logo_path = os.path.join(app.root_path, 'static', 'Image1.png')
+        print("--- DEBUG: Static logo path:", logo_path)
+        print("--- DEBUG: Exists in static?", os.path.exists(logo_path))
 
     header_text_cells = [
         Paragraph("SKY INTERNATIONAL SCHOOLS", title_style),
@@ -182,6 +187,7 @@ def create_student_pdf_buffer(student):
         ]))
         elements.append(header_table)
     else:
+        print("--- DEBUG: Logo not found in either location! Falling back to text-only.")
         title_style.alignment = 1
         sub_title_style.alignment = 1
         motto_style.alignment = 1

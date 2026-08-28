@@ -179,11 +179,14 @@ def create_student_pdf_buffer(student):
 
     if os.path.exists(logo_path):
         logo_img = Image(logo_path, width=65, height=65)
-        header_table = Table([[logo_img, header_text_cells]], colWidths=[75, 465])
+        
+        # We use a 3-column layout: [Logo, Centered Text, Empty spacer to balance the left logo]
+        header_table = Table([[logo_img, header_text_cells, ""]], colWidths=[70, 360, 70])
         header_table.setStyle(TableStyle([
             ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
             ('ALIGN', (0,0), (0,0), 'LEFT'),
             ('ALIGN', (1,0), (1,0), 'CENTER'),
+            ('ALIGN', (2,0), (2,0), 'RIGHT'),
             ('PADDING', (0,0), (-1,-1), 0),
         ]))
         elements.append(header_table)

@@ -162,12 +162,12 @@ def create_student_pdf_buffer(student):
     elements = []
 
     # 1. Top Header with Logo inserted on Left
-    logo_path = os.path.join(app.root_path, 'Image1.png')
+    logo_path = os.path.join(app.root_path, 'image1.png')
     print("--- DEBUG: Root logo path:", logo_path)
     print("--- DEBUG: Exists in root?", os.path.exists(logo_path))
 
     if not os.path.exists(logo_path):
-        logo_path = os.path.join(app.root_path, 'static', 'Image1.png')
+        logo_path = os.path.join(app.root_path, 'static', 'image1.png')
         print("--- DEBUG: Static logo path:", logo_path)
         print("--- DEBUG: Exists in static?", os.path.exists(logo_path))
 

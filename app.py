@@ -118,7 +118,7 @@ def create_student_pdf_buffer(student):
     HEADER_BLUE = colors.HexColor('#1E3A8A')
     LIGHT_BG = colors.HexColor('#F8FAFC')
     LINE_ORANGE = colors.HexColor('#D97706')
-
+    
     title_style = ParagraphStyle(
         'HeaderTitle',
         parent=styles['Title'],
@@ -183,6 +183,7 @@ def create_student_pdf_buffer(student):
         header_table.setStyle(TableStyle([
             ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
             ('ALIGN', (0,0), (0,0), 'LEFT'),
+            ('ALIGN', (1,0), (1,0), 'CENTER'),
             ('PADDING', (0,0), (-1,-1), 0),
         ]))
         elements.append(header_table)

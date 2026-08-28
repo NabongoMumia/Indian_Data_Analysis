@@ -126,7 +126,7 @@ def create_student_pdf_buffer(student):
         fontSize=18,
         leading=22,
         textColor=NAVY,
-        alignment=0
+        alignment=1
     )
     
     sub_title_style = ParagraphStyle(
@@ -136,7 +136,7 @@ def create_student_pdf_buffer(student):
         fontSize=8.5,
         leading=11,
         textColor=colors.HexColor('#475569'),
-        alignment=0
+        alignment=1
     )
     
     motto_style = ParagraphStyle(
@@ -146,7 +146,7 @@ def create_student_pdf_buffer(student):
         fontSize=8.5,
         leading=11,
         textColor=colors.HexColor('#1E40AF'),
-        alignment=0
+        alignment=1
     )
     
     section_heading = ParagraphStyle(

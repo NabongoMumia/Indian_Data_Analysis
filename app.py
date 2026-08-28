@@ -162,9 +162,9 @@ def create_student_pdf_buffer(student):
     elements = []
 
     # 1. Top Header with Logo inserted on Left
-    logo_path = os.path.join(app.root_path, 'lmage1.png')
+    logo_path = os.path.join(app.root_path, 'Image1.png')
     if not os.path.exists(logo_path):
-        logo_path = os.path.join(app.root_path, 'static', 'lmage1.png')
+        logo_path = os.path.join(app.root_path, 'static', 'Image1.png')
 
     header_text_cells = [
         Paragraph("SKY INTERNATIONAL SCHOOLS", title_style),
@@ -217,7 +217,7 @@ def create_student_pdf_buffer(student):
         fontSize=11,
         leading=13,
         textColor=NAVY,
-        alignment=0  # Left-aligned (use 1 for centered if preferred)
+        alignment=1 # Left-aligned (use 1 for centered if preferred)
     )
     elements.append(Paragraph("Official Academic Progress", table_title_style))
     elements.append(Spacer(1, 4))
